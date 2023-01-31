@@ -1,0 +1,34 @@
+<script>
+  export default {
+    name: "WindowTitleBars",
+    props: {
+      icon: { type: String },
+      title: { type: String, required: true },
+      actionHelp: { type: Boolean },
+      actionMinimize: { type: Boolean, default: true },
+      actionRestore: { type: Boolean, default: true },
+      actionClose: { type: Boolean, default: true }
+    }
+  }
+</script>
+
+<template>
+  <div class="window-titlebars">
+      <div class="window-titlebars-title">
+          <img v-bind:src="icon"
+              class="window-titlebars-icon"
+              v-bind:alt="title"/>
+          <span class="window-titlebars-label">{{ title }}</span>
+      </div>
+      <div class="window-titlebars-button">
+        <button v-if="actionHelp" class="window-titlebars-button-item icomoon ic-about"
+          aria-label="Help"></button>
+        <button v-if="actionMinimize" class="window-titlebars-button-item icomoon ic-window-minimize"
+          aria-label="Minimize"></button>
+        <button v-if="actionRestore" class="window-titlebars-button-item icomoon ic-window-restore"
+          aria-label="Restore"></button>
+        <button v-if="actionClose" class="window-titlebars-button-item icomoon ic-window-close"
+          aria-label="Close"></button>
+      </div>
+  </div>
+</template>

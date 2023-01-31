@@ -1,0 +1,34 @@
+@import "./font";
+@import "./variables";
+@import "./mixin";
+@import "./icomoon/style";
+
+body {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 100;
+    margin: 0;
+    padding: 0;
+}
+
+ol, ul, dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+#app {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.container-wrapper {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+@import "./cover";
+@import "./navigation";
+@import "./desktop-grid";
+@import "./file-station";
+@import "./window-titlebars";
