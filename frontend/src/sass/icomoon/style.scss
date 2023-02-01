@@ -1,12 +1,12 @@
-@import "./variables";
+@import "variables";
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?cnohhg');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?cnohhg#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?cnohhg') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?cnohhg') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?cnohhg##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?lloulm');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?lloulm#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?lloulm') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?lloulm') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?lloulm##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,63 +27,104 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-arrow-outline-down {
+  &:before {
+    content: $ic-arrow-outline-down; 
+  }
+}
+.ic-arrow-outline-left {
+  &:before {
+    content: $ic-arrow-outline-left; 
+  }
+}
+.ic-arrow-outline-right {
+  &:before {
+    content: $ic-arrow-outline-right; 
+  }
+}
+.ic-arrow-outline-up {
+  &:before {
+    content: $ic-arrow-outline-up; 
+  }
+}
+.ic-arrow-fill-down {
+  &:before {
+    content: $ic-arrow-fill-down; 
+  }
+}
+.ic-arrow-fill-up {
+  &:before {
+    content: $ic-arrow-fill-up; 
+  }
+}
+.ic-arrow-fill-left {
+  &:before {
+    content: $ic-arrow-fill-left; 
+  }
+}
+.ic-arrow-fill-right {
+  &:before {
+    content: $ic-arrow-fill-right; 
+  }
+}
 .ic-window-maximize {
   &:before {
-    content: $ic-window-maximize;
+    content: $ic-window-maximize; 
   }
 }
 .ic-window-close {
   &:before {
-    content: $ic-window-close;
+    content: $ic-window-close; 
   }
 }
 .ic-window-restore {
   &:before {
-    content: $ic-window-restore;
+    content: $ic-window-restore; 
   }
 }
 .ic-window-minimize {
   &:before {
-    content: $ic-window-minimize;
+    content: $ic-window-minimize; 
   }
 }
 .ic-search {
   &:before {
-    content: $ic-search;
+    content: $ic-search; 
   }
 }
 .ic-notification {
   &:before {
-    content: $ic-notification;
+    content: $ic-notification; 
   }
 }
 .ic-person {
   &:before {
-    content: $ic-person;
+    content: $ic-person; 
   }
 }
 .ic-home {
   &:before {
-    content: $ic-home;
+    content: $ic-home; 
   }
 }
 .ic-folder {
   &:before {
-    content: $ic-folder;
+    content: $ic-folder; 
   }
 }
 .ic-about {
   &:before {
-    content: $ic-about;
+    content: $ic-about; 
   }
 }
 .ic-minus {
   &:before {
-    content: $ic-minus;
+    content: $ic-minus; 
   }
 }
 .ic-cross {
   &:before {
-    content: $ic-cross;
+    content: $ic-cross; 
   }
 }
+

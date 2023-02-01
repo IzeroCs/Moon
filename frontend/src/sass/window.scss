@@ -1,0 +1,79 @@
+.window {
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    top: $navbar-height;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: calc(100vh - #{$navbar-height});
+}
+
+.window-titlebars {
+    display: flex;
+    border-bottom: $window-titlebars-border-width solid #eee;
+    align-items: center;
+    height: $window-titlebars-height;
+}
+
+.window-titlebars-title {
+    margin-left: 15px;
+}
+
+.window-titlebars-icon {
+    margin: 0;
+    padding: 0;
+    width: 23px;
+    height: 23px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.window-titlebars-label {
+    color: #555;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+.window-titlebars-button {
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.window-titlebars-button-item {
+    color: #999;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 11px;
+    margin-left: 8px;
+    cursor: pointer;
+
+    &:hover {
+        color: #555;
+    }
+}
+
+.window-sidebar-container {
+    display: flex;
+    flex: wrap;
+    flex-direction: row;
+    height: calc(100% - #{$window-titlebars-height} - #{$window-titlebars-border-width});
+    position: relative;
+}
+
+.window-sidebar-layout {
+    border-right: 1px solid #eee;
+    flex-basis: 13rem;
+    flex-grow: 1;
+    position: relative;
+    align-self: stretch;
+    overflow-y: auto;
+
+    @include scrollbars(6px, $scrollbar-foreground-color, $scrollbar-background-color);
+}
+
+.window-sidebar-content {
+    flex-basis: 0;
+    flex-grow: 999;
+}
