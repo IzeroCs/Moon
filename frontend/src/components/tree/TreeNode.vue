@@ -49,8 +49,7 @@
         class="tree-node"
         v-for="(node, index) in node.node"
         v-bind:key="index"
-        v-bind:node="node"
-      ></TreeNode>
+        v-bind:node="node"/>
     </ul>
   </li>
 </template>

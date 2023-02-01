@@ -1,8 +1,18 @@
 $icomoon-font-path: "/public/fonts/icomoon" !default;
 
-$navbar-height: 40px;
+$navigation-height: 40px;
 $window-titlebars-height: 40px;
 $window-titlebars-border-width: 1px;
 
 $scrollbar-foreground-color: rgba(0, 0, 0, 0.1);
 $scrollbar-background-color: transparent;
+
+$tree-view-item-height: 33px;
+
+$toolbar-height: 33px;
+
+$dropdown-item-height: 34px;
+
+$button-background-color: rgba(198, 212, 224, 0.4);
+$button-border-color: rgba(198, 212, 224, 0.4);
+$button-hover-border-color: rgba(124, 138, 152, 0.4);

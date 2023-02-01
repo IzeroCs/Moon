@@ -24,7 +24,7 @@ li.tree-node {
 .tree-node-title {
     display: flex;
     white-space: nowrap;
-    height: 33px;
+    height: $tree-view-item-height;
 
     &:hover::before {
         content: "";
@@ -32,7 +32,7 @@ li.tree-node {
         position: absolute;
         left: 10px;
         right: 0;
-        height: 33px;
+        height: $tree-view-item-height;
         pointer-events: none;
 
         @include border-radius(5px);

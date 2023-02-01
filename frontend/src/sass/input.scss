@@ -1,0 +1,9 @@
+input {
+    outline: none;
+    border: 1px solid #eee;
+    padding: 10px;
+
+    &:hover, &:focus {
+        border: 1px solid #ddd;
+    }
+}

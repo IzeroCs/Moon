@@ -1,0 +1,99 @@
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.toolbar-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-grow: 1;
+
+    & ~ .toolbar-row {
+        margin-top: 5px;
+    }
+
+    &:last-child {
+        margin-bottom: 5px;
+    }
+}
+
+.toolbar-cell {
+    margin-right: 6px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &.stretch {
+        flex-grow: 2;
+    }
+
+    & > .toolbar-button:first-child:nth-last-child(2) {
+        border-right: 1px solid $button-hover-border-color;
+        @include border-radius(4px 0 0 4px);
+    }
+
+    & > .toolbar-button:first-child:nth-last-child(2) ~ button {
+        @include border-radius(0 4px 4px 0);
+
+        &:hover {
+            border-left: 1px solid transparent;
+        }
+    }
+
+    & > .dropdown > .dropdown-button {
+        color: #333;
+        font-size: 14px;
+        background-color: $button-background-color;
+        border: 1px solid $button-border-color;
+        outline: 0;
+        height: $toolbar-height;
+        padding-left: 10px;
+        padding-right: 10px;
+        cursor: pointer;
+
+        @include border-radius(4px);
+
+        &:hover {
+            border: 1px solid $button-hover-border-color;
+        }
+    }
+
+    & > .btn {
+        padding: 0 10px;
+        height: $toolbar-height;
+
+        & > button {
+            padding: 0;
+            vertical-align: bottom;
+        }
+    }
+}
+
+.toolbar-button {
+    color: #333;
+    font-size: 15px;
+    background-color: $button-background-color;
+    border: 1px solid $button-border-color;
+    outline: none;
+    width: $toolbar-height;
+    height: $toolbar-height;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+
+    @include border-radius(4px);
+
+    &:hover {
+        border: 1px solid $button-hover-border-color;
+    }
+}
+
+.toolbar-input {
+    height: $toolbar-height;
+    font-size: 13px;
+
+    @include border-radius(4px);
+}

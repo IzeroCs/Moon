@@ -1,13 +1,19 @@
-@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
-    @if $inset {
-      -webkit-box-shadow:inset $top $left $blur $color;
-      -moz-box-shadow:inset $top $left $blur $color;
-      box-shadow:inset $top $left $blur $color;
-    } @else {
-      -webkit-box-shadow: $top $left $blur $color;
-      -moz-box-shadow: $top $left $blur $color;
-      box-shadow: $top $left $blur $color;
-    }
+@mixin icomoon {
+  font-family: '#{$icomoon-font-family}' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
 }
 
 @mixin border-radius($radius) {
@@ -15,6 +21,19 @@
      -moz-border-radius: $radius;
       -ms-border-radius: $radius;
           border-radius: $radius;
+}
+
+@mixin transition($transition...) {
+ -webkit-transition: $transition;
+ transition: $transition;
+}
+
+@mixin translate($x, $y) {
+  -webkit-transform: translate($x, $y);
+     -moz-transform: translate($x, $y);
+      -ms-transform: translate($x, $y);
+       -o-transform: translate($x, $y);
+          transform: translate($x, $y);
 }
 
 @mixin user-select($val) {

@@ -1,0 +1,41 @@
+.btn {
+    display: block;
+    background-color: $button-background-color;
+    border: 1px solid $button-border-color;
+    padding: 6px 0;
+    cursor: pointer;
+
+    @include border-radius(4px);
+    @include transition(0.3s);
+
+    & > .btn-text,
+    & > .btn-icon,
+    & > button {
+        color: #333;
+    }
+
+    & > button {
+        background-color: transparent;
+        border: 0;
+        margin: 0;
+        padding: 0 10px;
+        font-size: 14px;
+        outline: none;
+        pointer-events: none;
+    }
+
+    &:hover {
+        border: 1px solid $button-hover-border-color;
+    }
+}
+
+.btn-text {
+    & > .btn-icon {
+        vertical-align: middle;
+        margin-right: 5px;
+
+        & + button {
+            padding-left: 0;
+        }
+    }
+}

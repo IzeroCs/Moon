@@ -5,10 +5,10 @@
     name: "My Tree",
     isActive: true,
     node: [
-      { name: "Hello", isActive: true },
+      { name: "Hello", isActive: false },
       {
         name: "Child folder",
-        isActive: true,
+        isActive: false,
         node: [{
           name: "Sub child",
           isActive: true,
@@ -80,7 +80,7 @@
       },
       {
         name: "Three child",
-        isActive: true,
+        isActive: false,
         node: [
           { name: "Test" },
           { name: "Sub test" }

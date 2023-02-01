@@ -3,16 +3,46 @@
 @import "./mixin";
 @import "./icomoon/style";
 
+:root {
+    --navigation-height: #{$navigation-height};
+    --toolbar-height: #{$toolbar-height};
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Nunito', sans-serif;
+    font-size: 18px;
     font-weight: 100;
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 ol, ul, dl {
     margin-top: 0;
     margin-bottom: 1rem;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, input {
+    overflow: visible;
+}
+
+button, input, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button {
+    @include border-radius(0);
 }
 
 #app {
@@ -27,10 +57,14 @@ ol, ul, dl {
     position: relative;
 }
 
+@import "./input";
+@import "./button";
 @import "./cover";
 @import "./navigation";
+@import "./dropdown";
 @import "./window";
-@import "./sidebar";
 @import "./tree-view";
+@import "./toolbar";
+@import "./breadcrumb";
 @import "./desktop-grid";
 @import "./file-station";
