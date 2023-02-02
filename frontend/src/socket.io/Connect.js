@@ -9,6 +9,7 @@ const socket = io({
 export default function() {
     socket.on("connect", () => {
         console.log("Connected")
+        socket.emit("login", { username: "admin", password: "admin" })
     })
 
     return { socket }
