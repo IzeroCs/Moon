@@ -1,71 +1,42 @@
 .dropdown {
     position: relative;
     width: fit-content;
+    height: inherit;
 }
 
 .dropdown-list {
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: $dropdown-list-background-color;
+    border: 1px solid $dropdown-list-border-color;
     position: absolute;
     width: fit-content;
-    margin-top: 5px;
-    padding: 8px;
+    margin-top: #{$dropdown-item-spacing / 2};
+    padding: #{$dropdown-item-spacing * 0.8};
     z-index: 10;
 
-    @include border-radius(4px);
-    @include box-shadow(1px 1px 5px rgba(0, 0, 0, 0.05),
-        -1px 0 5px rgba(0, 0, 0, 0.05));
-}
-
-.dropdown-button {
-    color: #333;
-    background-color: #eee;
-    border: 1px solid #eee;
-    font-size: 14px;
-    position: relative;
-    padding: 6px 14px;
-    cursor: pointer;
-
-    @include border-radius(4px);
-    @include transition(0.2s);
-
-    &:focus {
-        outline: 0px;
-    }
-
-    &:hover {
-        border: 1px solid #ddd;
-    }
-
-    &.isActive {
-        border: 1px solid #ddd;
-    }
-
-    &::after {
-        color: #333;
-        content: $ic-arrow-fill-down;
-        font-size: 18px;
-        margin-right: -5px;
-        vertical-align: bottom;
-
-        @include icomoon;
-    }
+    @include border-radius($dropdown-border-radius);
+    @include box-shadow(
+        #{$dropdown-box-shadow-offset} #{$dropdown-box-shadow-offset}
+        #{$dropdown-box-shadow-blur} #{$dropdown-list-box-shadow-color},
+        -#{$dropdown-box-shadow-offset} 0
+        #{$dropdown-box-shadow-blur} #{$dropdown-list-box-shadow-color}
+    );
 }
 
 .dropdown-item {
     display: block;
     width: 100%;
-    padding: 0 10px;
+    padding: 0 #{$dropdown-item-spacing};
     position: relative;
     white-space: nowrap;
     cursor: pointer;
     height: $dropdown-item-height;
 
-    @include transition(0.3s);
+    @include tap-highlight-color();
+    @include transition($dropdown-transition);
 
     &:hover {
-        background-color: #eee;
-        @include border-radius(4px);
+        background-color: $dropdown-item-hover-background-color;
+        @include border-radius($dropdown-border-radius);
     }
 
     &.disabled {
@@ -74,26 +45,26 @@
         .dropdown-icon:not(.invisible),
         .dropdown-label,
         &.sub::after {
-            color: #aaa;
+            color: $dropdown-item-disabled-color;
         }
     }
 
     &.divider {
-        margin-bottom: 10px;
+        margin-bottom: $dropdown-item-spacing;
     }
 
     &.divider::before {
         content: "";
-        border: 10px solid transparent;
-        border-bottom: 1px solid #eee;
+        border: #{$dropdown-item-spacing} solid transparent;
+        border-bottom: 1px solid $dropdown-divider-color;
         position: absolute;
-        bottom: -5px;
+        bottom: -#{$dropdown-item-spacing / 2};
         left: 0;
         width: 100%;
     }
 
     &.sub::after {
-        color: #333;
+        color: $dropdown-item-color;
         content: $ic-arrow-fill-right;
         position: absolute;
         top: 50%;
@@ -109,9 +80,9 @@
 }
 
 .dropdown-icon {
-    color: #444;
-    font-size: 17px;
-    margin-right: 10px;
+    color: $dropdown-icon-color;
+    font-size: 1rem;
+    margin-right: $dropdown-item-spacing;
     vertical-align: middle;
 
     &.invisible {
@@ -120,8 +91,8 @@
 }
 
 .dropdown-label {
-    color: #444;
-    font-size: 13px;
+    color: $dropdown-item-color;
+    font-size: 0.85rem;
     line-height: $dropdown-item-height;
 
     @include user-select(none);
@@ -129,37 +100,40 @@
 
 .dropdown-sub {
     display: none;
-    background-color: #fff;
-    border: 1px solid #eee;
+    background-color: $dropdown-list-background-color;
+    border: 1px solid $dropdown-list-border-color;
     position: absolute;
     top: 0;
-    left: calc(100% + 15px);
+    left: calc(100% + #{$dropdown-parent-sub-spacing});
     height: fit-content;
     width: fit-content;
-    padding: 8px;
+    padding: #{$dropdown-item-spacing * 0.8};
 
-    @include transition(0.3s);
-    @include border-radius(4px);
-    @include box-shadow(1px 1px 5px rgba(0, 0, 0, 0.05),
-        -1px 0 5px rgba(0, 0, 0, 0.05));
+    @include transition($dropdown-transition);
+    @include border-radius($dropdown-border-radius);
+    @include box-shadow(
+        #{$dropdown-box-shadow-offset} #{$dropdown-box-shadow-offset}
+        #{$dropdown-box-shadow-blur} #{$dropdown-list-box-shadow-color},
+        -#{$dropdown-box-shadow-offset} 0
+        #{$dropdown-box-shadow-blur} #{$dropdown-list-box-shadow-color});
 
     &::after {
         content: "";
         background-color: transparent;
         position: absolute;
         top: 0;
-        left: -30px;
-        width: 30px;
+        left: -#{$dropdown-parent-sub-spacing * 2};
+        width: #{$dropdown-parent-sub-spacing * 2};
         height: 100%;
     }
 }
 
 .dropdown-sub-item {
-    padding: 0 15px;
+    padding: 0 #{$dropdown-item-spacing};
     height: $dropdown-item-height;
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.05);
-        @include border-radius(4px);
+        background-color: $dropdown-item-hover-background-color;
+        @include border-radius($dropdown-border-radius);
     }
 }

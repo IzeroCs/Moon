@@ -22,9 +22,9 @@
 }
 
 .desktop-grid-icon {
-    width: 56px;
-    height: 56px;
-    margin-bottom: 10px;
+    width: $desktop-grid-icon-size;
+    height: $desktop-grid-icon-size;
+    margin-bottom: $desktop-grid-spacing;
 }
 
 .desktop-grid-label {

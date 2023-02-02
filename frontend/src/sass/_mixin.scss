@@ -45,6 +45,18 @@
   user-select: $val;
 }
 
+@mixin tap-highlight-color($color: rgba(0, 0, 0, 0)) {
+  -webkit-tap-highlight-color: $color;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@mixin filter($value) {
+  -webkit-filter: $value;
+     -moz-filter: $value;
+       -o-filter: $value;
+          filter: $value;
+}
+
 @mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
   &::-webkit-scrollbar {
     width:  $size;

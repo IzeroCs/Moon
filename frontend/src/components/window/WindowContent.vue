@@ -33,8 +33,6 @@
         }
       }
 
-      console.log(childHeight)
-
       this.contentHeight = "calc(100vh - var(--navigation-height)" +
         " - var(--toolbar-height) - 10px - " + childHeight + "px"
     }

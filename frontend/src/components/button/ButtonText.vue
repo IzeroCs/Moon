@@ -8,12 +8,12 @@
 </script>
 
 <template>
-  <div class="btn btn-text">
+  <button class="btn btn-text" type="button">
     <span
       class="btn-icon icomoon"
       v-bind:class="icon"
       v-if="icon"
     ></span>
-    <button type="button"><slot/></button>
-  </div>
+    <slot/>
+  </button>
 </template>

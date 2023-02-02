@@ -43,7 +43,7 @@
 <template>
   <div v-bind:id="id" class="dropdown">
     <button
-      class="dropdown-button"
+      class="btn btn-dropdown btn-dropdown-arrow"
       v-on:click="isOpen = !isOpen"
       v-bind:class="{ isActive: isOpen }"
     >
@@ -62,7 +62,7 @@
           sub: item.sub
         }"
       >
-        <span class="dropdown-icon icomoon ic-folder" v-if="item.icon"></span>
+        <span class="dropdown-icon icomoon" v-bind:class="item.icon" v-if="item.icon"></span>
         <span class="dropdown-icon icomoon ic-zero invisible" v-else></span>
         <span class="dropdown-label">{{ item.title }}</span>
 

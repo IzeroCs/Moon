@@ -5,7 +5,9 @@
 </script>
 
 <template>
-  <div class="toolbar">
-    <slot/>
-  </div>
+  <table class="toolbar">
+    <tr class="toolbar-row">
+      <slot/>
+    </tr>
+  </table>
 </template>

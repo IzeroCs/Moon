@@ -23,14 +23,26 @@
         <span class="window-titlebars-label">{{ title }}</span>
       </div>
       <div class="window-titlebars-button">
-        <button v-if="actionHelp" class="window-titlebars-button-item icomoon ic-about"
-          aria-label="Help"></button>
-        <button v-if="actionMinimize" class="window-titlebars-button-item icomoon ic-window-minimize"
-          aria-label="Minimize"></button>
-        <button v-if="actionRestore" class="window-titlebars-button-item icomoon ic-window-restore"
-          aria-label="Restore"></button>
-        <button v-if="actionClose" class="window-titlebars-button-item icomoon ic-window-close"
-          aria-label="Close"></button>
+        <button
+          v-if="actionHelp"
+          class="window-titlebars-button-item icomoon ic-about"
+          data-action="help"
+        ></button>
+        <button
+          v-if="actionMinimize"
+          class="window-titlebars-button-item icomoon ic-window-minimize"
+          data-action="minimize"
+        ></button>
+        <button
+          v-if="actionRestore"
+          class="window-titlebars-button-item icomoon ic-window-restore"
+          data-action="restore"
+        ></button>
+        <button
+          v-if="actionClose"
+          class="window-titlebars-button-item icomoon ic-window-close"
+          data-action="close"
+        ></button>
       </div>
     </div>
     <div class="window-container window-sidebar-container">

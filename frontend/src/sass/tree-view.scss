@@ -3,17 +3,19 @@ ul.tree-view ul {
     list-style: none;
     margin: 0;
     padding: 0;
+
+    @include tap-highlight-color();
 }
 
 ul.tree-view {
-    margin-right: 2px;
-    padding: 10px;
+    margin-right: 3px;
+    padding: 8px;
     position: relative;
     overflow-x: hidden;
 }
 
 ul.tree-view ul {
-    padding-left: 15px;
+    padding-left: $tree-view-spacing-node;
 }
 
 li.tree-node {
@@ -28,26 +30,28 @@ li.tree-node {
 
     &:hover::before {
         content: "";
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: $tree-view-item-hover-background-color;
         position: absolute;
-        left: 10px;
+        left: $tree-view-spacing-node;
         right: 0;
         height: $tree-view-item-height;
         pointer-events: none;
 
-        @include border-radius(5px);
+        @include border-radius($tree-view-item-border-radius);
     }
 }
 
 .tree-node-icon {
+    color: $tree-view-item-color;
     display: inline-block;
-    font-size: 18px;
+    font-size: 1.1rem;
     align-self: center;
     margin-bottom: 1px;
 }
 
 .tree-node-label {
-    font-size: 14px;
+    color: $tree-view-item-color;
+    font-size: 0.85rem;
     display: inline-block;
     align-self: center;
 }

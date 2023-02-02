@@ -1,0 +1,55 @@
+$highlight-color: #0288d1;
+
+$scrollbar-foreground-color: rgba(0, 0, 0, 0.1);
+$scrollbar-background-color: transparent;
+
+$button-color: #444;
+$button-background-color: #f0f0f0;
+$button-border-color: #e0e0e0;
+$button-border-hover-color: #ccc;
+
+$input-border-color: #e0e0e0;
+$input-border-hover-color: #ccc;
+
+$navigation-background-color: #fff;
+$navigation-action-item-color: #444;
+$navigation-box-shadow-color: rgba(0, 0, 0, 0.5);
+$navigation-action-item-hover-color: $highlight-color;
+
+$window-background-color: #fff;
+$window-box-shadow-color: rgba(0, 0, 0, 0.3);
+$window-titlebars-color: #555;
+$window-titlebars-border-color: #eee;
+$window-titlebars-button-color: #999;
+$window-titlebars-button-action-help-color: rgba(3, 155, 229, 1);
+$window-titlebars-button-action-help-background-color: rgba(3, 155, 229, 0.1);
+$window-titlebars-button-action-minimize-color: rgba(124, 179, 66, 1);
+$window-titlebars-button-action-minimize-background-color: rgba(124, 179, 66, 0.1);
+$window-titlebars-button-action-restore-color: rgba(255, 179, 0, 1);
+$window-titlebars-button-action-restore-background-color: rgba(255, 179, 0, 0.1);
+$window-titlebars-button-action-close-color: rgba(229, 57, 53, 1);
+$window-titlebars-button-action-close-background-color: rgba(229, 57, 53, 0.1);
+$window-titlebars-button-hover-color: $highlight-color;
+$window-sidebar-layout-border-color: #eee;
+$window-sidebar-layout-scrollbar-foreground-color: $scrollbar-foreground-color;
+$window-sidebar-layout-scrollbar-background-color: $scrollbar-background-color;
+$window-content-scrollbar-foreground-color: $scrollbar-foreground-color;
+$window-content-scrollbar-background-color: $scrollbar-background-color;
+
+$breadcrumb-color: #333;
+$breadcrumb-arrow-color: #333;
+$breadcrumb-hover-color: $highlight-color;
+$breadcrumb-border-color: #eee;
+
+$tree-view-item-color: #333;
+$tree-view-item-icon-color: #333;
+$tree-view-item-hover-background-color: rgba(0, 0, 0, 0.05);
+
+$dropdown-list-background-color: #fff;
+$dropdown-list-border-color: #ddd;
+$dropdown-list-box-shadow-color: rgba(0, 0, 0, 0.05);
+$dropdown-item-color: #555;
+$dropdown-icon-color: #666;
+$dropdown-item-hover-background-color: rgba(0, 0, 0, 0.05);
+$dropdown-item-disabled-color: #aaa;
+$dropdown-divider-color: #eee;

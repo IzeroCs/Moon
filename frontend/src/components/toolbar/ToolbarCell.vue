@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <div class="toolbar-cell">
+  <td class="toolbar-cell">
     <slot/>
-  </div>
+  </td>
 </template>

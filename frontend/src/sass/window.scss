@@ -1,5 +1,5 @@
 .window {
-    background-color: #fff;
+    background-color: $window-background-color;
     display: block;
     position: absolute;
     top: $navigation-height;
@@ -8,7 +8,10 @@
     right: 0;
     height: calc(100vh - #{$navigation-height});
 
-    @include box-shadow(-3px -3px 10px rgba(255, 255, 255, 0.25));
+    @include box-shadow(
+        -#{$window-box-shadow-offset} -#{$window-box-shadow-offset}
+        #{$window-box-shadow-blur} #{$window-box-shadow-color}
+    );
 }
 
 .window-content-wrapper {
@@ -24,12 +27,16 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    @include scrollbars(6px, $scrollbar-foreground-color, $scrollbar-background-color);
+    @include scrollbars(
+        $window-content-scrollbar-size,
+        $window-content-scrollbar-foreground-color,
+        $window-content-scrollbar-background-color
+    );
 }
 
 .window-titlebars {
     display: flex;
-    border-bottom: $window-titlebars-border-width solid #eee;
+    border-bottom: #{$window-titlebars-border-width} solid #{$window-titlebars-border-color};
     align-items: center;
     height: $window-titlebars-height;
 }
@@ -41,18 +48,17 @@
 .window-titlebars-icon {
     margin: 0;
     padding: 0;
-    width: 23px;
-    height: 23px;
+    width: $window-titlebars-height * 0.7;
+    height: $window-titlebars-height * 0.7;
     margin-right: 5px;
-    margin-top: -1px;
     vertical-align: middle;
 }
 
 .window-titlebars-label {
-    color: #555;
-    font-size: 14px;
+    color: $window-titlebars-color;
+    font-size: 0.9rem;
     font-weight: bold;
-    line-height: $navigation-height;
+    vertical-align: middle;
 }
 
 .window-titlebars-button {
@@ -61,16 +67,39 @@
 }
 
 .window-titlebars-button-item {
-    color: #999;
+    color: $window-titlebars-button-color;
     background: transparent;
     border: 0;
     outline: 0;
-    font-size: 11px;
+    font-size: 0.75rem;
     margin-left: 8px;
+    width: $window-titlebars-height * 0.65;
+    height: $window-titlebars-height * 0.65;
     cursor: pointer;
 
     &:hover {
-        color: #555;
+        background-color: rgba(0, 0, 0, 0.1);
+        @include border-radius(50% 50%);
+    }
+
+    &[data-action=help]:hover {
+        color: $window-titlebars-button-action-help-color;
+        background-color: $window-titlebars-button-action-help-background-color;
+    }
+
+    &[data-action=minimize]:hover {
+        color: $window-titlebars-button-action-minimize-color;
+        background-color: $window-titlebars-button-action-minimize-background-color;
+    }
+
+    &[data-action=restore]:hover {
+        color: $window-titlebars-button-action-restore-color;
+        background-color: $window-titlebars-button-action-restore-background-color;
+    }
+
+    &[data-action=close]:hover {
+        color: $window-titlebars-button-action-close-color;
+        background-color: $window-titlebars-button-action-close-background-color;
     }
 }
 
@@ -83,18 +112,22 @@
 }
 
 .window-sidebar-layout {
-    border-right: 1px solid #eee;
+    border-right: 1px solid $window-sidebar-layout-border-color;
     flex-basis: 13rem;
     flex-grow: 1;
     position: relative;
     align-self: stretch;
     overflow-y: auto;
 
-    @include scrollbars(6px, $scrollbar-foreground-color, $scrollbar-background-color);
+    @include scrollbars(
+        $window-sidebar-layout-scrollbar-size,
+        $window-sidebar-layout-scrollbar-foreground-color,
+        $window-sidebar-layout-scrollbar-background-color
+    );
 }
 
 .window-sidebar-content {
-    padding: 15px;
+    padding: 10px;
     flex-basis: 0;
     flex-grow: 999;
     overflow: hidden;

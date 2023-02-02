@@ -1,99 +1,51 @@
 .toolbar {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    border-spacing: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    & ~ .toolbar {
+        margin-top: $toolbar-spacing;
+    }
 }
 
 .toolbar-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    flex-grow: 1;
+    height: $toolbar-height;
+    margin: 0;
+    padding: 0;
 
     & ~ .toolbar-row {
-        margin-top: 5px;
-    }
-
-    &:last-child {
-        margin-bottom: 5px;
+        margin-top: $toolbar-spacing;
     }
 }
 
 .toolbar-cell {
-    margin-right: 6px;
+    height: inherit;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    padding-right: $toolbar-spacing;
 
     &:last-child {
-        margin-right: 0;
+        padding-right: 0;
     }
 
     &.stretch {
-        flex-grow: 2;
+        width: 100%;
     }
 
-    & > .toolbar-button:first-child:nth-last-child(2) {
-        border-right: 1px solid $button-hover-border-color;
-        @include border-radius(4px 0 0 4px);
+    & > .btn-icon:first-child:nth-last-child(2) {
+        margin-right: 0;
+        border-right: 1px solid transparent;
+        @include border-radius($button-border-radius 0 0 $button-border-radius);
     }
 
-    & > .toolbar-button:first-child:nth-last-child(2) ~ button {
-        @include border-radius(0 4px 4px 0);
-
-        &:hover {
-            border-left: 1px solid transparent;
-        }
+    & > .btn-icon:first-child:nth-last-child(2) ~ .btn-icon {
+        margin-left: 0;
+        @include border-radius(0 $button-border-radius $button-border-radius 0);
     }
 
-    & > .dropdown > .dropdown-button {
-        color: #333;
-        font-size: 14px;
-        background-color: $button-background-color;
-        border: 1px solid $button-border-color;
-        outline: 0;
-        height: $toolbar-height;
-        padding-left: 10px;
-        padding-right: 10px;
-        cursor: pointer;
-
-        @include border-radius(4px);
-
-        &:hover {
-            border: 1px solid $button-hover-border-color;
-        }
+    & > .btn-icon:first-child:nth-last-child(2):hover ~ .btn-icon {
+        border-left: 1px solid $button-border-hover-color;
     }
-
-    & > .btn {
-        padding: 0 10px;
-        height: $toolbar-height;
-
-        & > button {
-            padding: 0;
-            vertical-align: bottom;
-        }
-    }
-}
-
-.toolbar-button {
-    color: #333;
-    font-size: 15px;
-    background-color: $button-background-color;
-    border: 1px solid $button-border-color;
-    outline: none;
-    width: $toolbar-height;
-    height: $toolbar-height;
-    padding-left: 10px;
-    padding-right: 10px;
-    cursor: pointer;
-
-    @include border-radius(4px);
-
-    &:hover {
-        border: 1px solid $button-hover-border-color;
-    }
-}
-
-.toolbar-input {
-    height: $toolbar-height;
-    font-size: 13px;
-
-    @include border-radius(4px);
 }
