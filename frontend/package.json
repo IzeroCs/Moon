@@ -1,72 +1,48 @@
 {
-  "name": "moon-frontend",
-  "version": "1.0.0",
-  "author": "IzeroCs",
-  "license": "MIT",
-  "description": "Frontend File Management",
-  "keywords": [
-    "frontend",
-    "file",
-    "Management",
-    "moon",
-    "station"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IzeroCs/Moon.git"
-  },
-  "bugs": {
-    "url": "https://github.com/IzeroCs/Moon/issues"
-  },
-  "homepage": "https://github.com/IzeroCs/Moon#readme",
+  "name": "frontend",
+  "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
-  },
   "dependencies": {
-    "core-js": "^3.8.3",
-    "file-loader": "^6.2.0",
-    "socket.io-client": "^4.5.4",
-    "url-loader": "^4.1.1",
-    "vue": "^3.2.13",
-    "vuex": "^4.1.0"
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.11",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.58.0",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "@babel/core": "^7.12.16",
-    "@babel/eslint-parser": "^7.12.16",
-    "@vue/cli-plugin-babel": "~5.0.0",
-    "@vue/cli-plugin-eslint": "~5.0.0",
-    "@vue/cli-service": "~5.0.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-vue": "^8.0.3",
-    "node-sass": "^8.0.0",
-    "sass-loader": "^13.2.0",
-    "style-loader": "^3.3.1"
+  "scripts": {
+    "start": "react-app-rewired start --scripts-version react-scripts",
+    "build": "react-app-rewired build --scripts-version react-scripts",
+    "test": "react-app-rewired test --scripts-version react-scripts",
+    "eject": "react-app-rewired start --scripts-version eject react-scripts"
   },
   "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
     "extends": [
-      "plugin:vue/vue3-essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "@babel/eslint-parser"
-    },
-    "rules": {
-      "vue/multi-word-component-names": 0,
-      "no-unused-vars": "off",
-      "vue/no-unused-components": "off"
-    }
+      "react-app",
+      "react-app/jest"
+    ]
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ]
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "react-app-rewired": "^2.2.1"
+  }
 }

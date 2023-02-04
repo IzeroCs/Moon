@@ -28,7 +28,7 @@ li.breadcrumb-item {
     & + li::before {
         content: $ic-arrow-outline-right;
         color: $breadcrumb-arrow-color;
-        margin: 0 $breadcrumb-spacing / 2;
+        margin: 0 math.div($breadcrumb-spacing, 2);
         vertical-align: text-bottom;
 
         @include icomoon;
