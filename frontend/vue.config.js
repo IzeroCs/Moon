@@ -1,9 +1,10 @@
 const { defineConfig } = require('@vue/cli-service')
+const path = require("path")
 
 module.exports = defineConfig({
   pages: {
     index: {
-      entry: "./src/Main.ts"
+      entry: "./src/Main.js"
     }
   },
   chainWebpack: config => {

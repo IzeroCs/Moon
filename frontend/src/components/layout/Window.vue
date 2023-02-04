@@ -1,9 +1,8 @@
-<script lang="ts">
-  import { Options, Vue } from "vue-class-component"
-
-  @Options({
+<script>
+  export default {
+    name: "Window",
     props: {
-      icon: { type: String, default: "" },
+      icon: { type: String },
       title: { type: String, required: true },
       actionHelp: { type: Boolean },
       actionMinimize: { type: Boolean, default: true },
@@ -11,16 +10,6 @@
       actionClose: { type: Boolean, default: true },
       enableSidebar: { type: Boolean }
     }
-  })
-
-  export default class WindowLayout extends Vue {
-    public icon?: string
-    public title?: string
-    public actionHelp?: boolean
-    public actionMinimize?: boolean
-    public actionRestore?: boolean
-    public actionClose?: boolean
-    public enableSidebar?: boolean
   }
 </script>
 

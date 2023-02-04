@@ -1,14 +1,14 @@
-<script lang="ts">
-  import { defineComponent, PropType } from "vue"
+<script>
   import BreadcrumbItem from "../item/BreadcrumbItem.vue"
 
-  export default defineComponent({
+  export default {
+    name: "Breadcrumb",
     props: {
-      lists: { type: Object as PropType<Array<string>> }
+      lists: Array
     },
 
     components: { BreadcrumbItem }
-  })
+  }
 </script>
 
 <template>

@@ -1,15 +1,8 @@
-<script lang="ts">
-  import { defineComponent, PropType } from "vue"
-
-  export interface NodeEntry {
-    name: string
-    isActive?: boolean
-    node?: Array<NodeEntry>
-  }
-
-  export default defineComponent({
+<script>
+  export default {
+    name: "TreeNode",
     props: {
-      node: { type: Object as PropType<NodeEntry>, required: true },
+      node: Object,
       isActive: { type: Boolean }
     },
 
@@ -23,13 +16,17 @@
     },
 
     computed: {
-      isParent() { return this.node.node && this.node.node.length }
+      isParent() {
+        return this.node.node && this.node.node.length
+      }
     },
 
     methods: {
-      toggle() { this.isOpen = !this.isOpen }
+      toggle() {
+        this.isOpen = !this.isOpen
+      }
     }
-  })
+  }
 </script>
 
 <template>
@@ -48,9 +45,9 @@
     <ul v-show="isOpen" v-if="isParent">
       <TreeNode
         class="tree-node"
-        v-for="(entry, index) in node.node"
+        v-for="(node, index) in node.node"
         v-bind:key="index"
-        v-bind:node="entry"/>
+        v-bind:node="node"/>
     </ul>
   </li>
 </template>

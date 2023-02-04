@@ -1,24 +1,10 @@
-<script lang="ts">
-  import { defineComponent, PropType } from "vue"
-
-  export interface IDropdownEntry {
-    title: string
-    icon?: string
-    disabled?: boolean
-    divider?: boolean
-    sub?: Array<IDropdownEntrySub>
-  }
-
-  export interface IDropdownEntrySub {
-    title: string
-    disabled?: boolean
-  }
-
-  export default defineComponent({
+<script>
+  export default {
+    name: "DropdownItem",
     props: {
       index: { type: Number, required: true },
-      item: { type: Object as PropType<IDropdownEntry>, required: true },
-      close: { type: Function, default: (item: IDropdownEntry, index: number) => {} }
+      item: { type: Object, required: true },
+      close: { type: Function, default: () => {} }
     },
 
     methods: {
@@ -26,7 +12,7 @@
         this.close(this.item, this.index)
       }
     }
-  })
+  }
 </script>
 
 <template>

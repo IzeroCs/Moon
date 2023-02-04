@@ -1,11 +1,11 @@
 <script>
   export default {
-    name: "SidebarContent"
+    name: "ToolbarCell"
   }
 </script>
 
 <template>
-  <div class="window-sidebar-content">
+  <td class="toolbar-cell">
     <slot/>
-  </div>
+  </td>
 </template>

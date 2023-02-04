@@ -1,11 +1,10 @@
-<script lang="ts">
-  import { defineComponent } from "vue"
-
-  export default defineComponent({
+<script>
+  export default {
+    name: "BreadcrumbItem",
     props: {
       item: { type: String, required: true }
     }
-  })
+  }
 </script>
 
 <template>

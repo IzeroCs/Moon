@@ -1,11 +1,10 @@
-<script lang="ts">
-  import { defineComponent } from "vue"
-
-  export default defineComponent({
+<script>
+  export default {
+    name: "ButtonText",
     props: {
       icon: String
     }
-  })
+  }
 </script>
 
 <template>

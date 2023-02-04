@@ -1,8 +1,7 @@
-<script lang="ts">
-  import { defineComponent  } from "vue"
-  import TreeNode, { NodeEntry } from "../item/TreeNode.vue"
+<script>
+  import TreeNode from "../item/TreeNode.vue"
 
-  var treeData: NodeEntry = {
+  var treeData = {
     name: "My Tree",
     isActive: true,
     node: [
@@ -90,9 +89,10 @@
     ]
   }
 
-  export default defineComponent({
+  export default {
+    name: "TreeView",
     props: {
-      lists: { type: Object, required: false }
+      lists: { type: Object }
     },
 
     components: { TreeNode },
@@ -100,7 +100,7 @@
     data() {
       return { treeData }
     }
-  })
+  }
 </script>
 
 <template>

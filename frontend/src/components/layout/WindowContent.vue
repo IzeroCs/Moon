@@ -1,7 +1,7 @@
-<script lang="ts">
-  import { Options, Vue } from "vue-class-component"
+<script>
+  export default {
+    name: "WindowContent",
 
-  @Options({
     data() {
       return { contentHeight: 0 }
     },
@@ -36,10 +36,6 @@
       this.contentHeight = "calc(100vh - var(--navigation-height)" +
         " - var(--toolbar-height) - 10px - " + childHeight + "px"
     }
-  })
-
-  export default class WindowContent extends Vue {
-    public contentHeight?: number
   }
 </script>
 
