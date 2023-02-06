@@ -11,7 +11,9 @@
     --toolbar-height: #{$toolbar-height};
 }
 
-*, ::after, ::before {
+*,
+::after,
+::before {
     box-sizing: border-box;
 }
 
@@ -24,20 +26,27 @@ body {
     overflow: hidden;
 }
 
-ol, ul, dl {
+ol,
+ul,
+dl {
     margin-top: 0;
     margin-bottom: 1rem;
 }
 
-button, select {
+button,
+select {
     text-transform: none;
 }
 
-button, input {
+button,
+input {
     overflow: visible;
 }
 
-button, input, optgroup, textarea {
+button,
+input,
+optgroup,
+textarea {
     margin: 0;
     font-family: inherit;
     font-size: inherit;
@@ -71,3 +80,4 @@ button {
 @import "./breadcrumb";
 @import "./desktop-grid";
 @import "./file-station";
+@import "./list-view.scss";

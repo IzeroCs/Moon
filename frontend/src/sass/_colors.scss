@@ -1,7 +1,7 @@
 $highlight-color: #0288d1;
 
-$scrollbar-foreground-color: rgba(0, 0, 0, 0.1);
-$scrollbar-background-color: transparent;
+$scrollbar-foreground-color-default: rgba(0, 0, 0, 0.1);
+$scrollbar-background-color-default: transparent;
 
 $button-color: #444;
 $button-background-color: #f0f0f0;
@@ -31,10 +31,10 @@ $window-titlebars-button-action-close-color: rgba(229, 57, 53, 1);
 $window-titlebars-button-action-close-background-color: rgba(229, 57, 53, 0.1);
 $window-titlebars-button-hover-color: $highlight-color;
 $window-sidebar-layout-border-color: #eee;
-$window-sidebar-layout-scrollbar-foreground-color: $scrollbar-foreground-color;
-$window-sidebar-layout-scrollbar-background-color: $scrollbar-background-color;
-$window-content-scrollbar-foreground-color: $scrollbar-foreground-color;
-$window-content-scrollbar-background-color: $scrollbar-background-color;
+$window-sidebar-layout-scrollbar-foreground-color: $scrollbar-foreground-color-default;
+$window-sidebar-layout-scrollbar-background-color: $scrollbar-background-color-default;
+$window-content-scrollbar-foreground-color: $scrollbar-foreground-color-default;
+$window-content-scrollbar-background-color: $scrollbar-background-color-default;
 
 $breadcrumb-color: #333;
 $breadcrumb-arrow-color: #333;
@@ -53,3 +53,6 @@ $dropdown-icon-color: #666;
 $dropdown-item-hover-background-color: rgba(0, 0, 0, 0.05);
 $dropdown-item-disabled-color: #aaa;
 $dropdown-divider-color: #eee;
+
+$list-view-scrollbar-foreground-color: $scrollbar-foreground-color-default;
+$list-view-scrollbar-background-color: $scrollbar-background-color-default;

@@ -8,10 +8,19 @@ import ToolbarLayout, { ToolbarCell } from "../layout/ToolbarLayout"
 import { ButtonIcon, ButtonText } from "../widget/Button"
 import Breadcrumb from "../widget/Breadcrumb"
 import Dropdown from "../widget/Dropdown"
+import ListView from "../widget/ListView"
 import IconFolder from "../../assets/icon/svg/icon-folder.svg"
 import TreeViewData from "../../tree-view.json"
 import BreadcrumbData from "../../breadcrumb.json"
 import DropdownData from "../../dropdown.json"
+import { ListViewColumnSize } from "../widget/ListViewAdapter"
+
+const listColumnsData = [
+  { label: "Name" },
+  { label: "Size" },
+  { label: "FileType", size: ListViewColumnSize.MEDIUM },
+  { label: "Owner", size: ListViewColumnSize.LARGE }
+]
 
 export default class FileStation extends
   React.Component {
@@ -60,9 +69,7 @@ export default class FileStation extends
           </ToolbarCell>
         </ToolbarLayout>
         <WindowContent>
-          {Array(100).fill(undefined).map((value, index) => {
-            return <p>Line index {index}</p>
-          })}
+          <ListView listColumns={listColumnsData} />
         </WindowContent>
       </SidebarContent>
     </WindowLayout>

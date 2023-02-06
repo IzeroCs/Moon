@@ -1,12 +1,9 @@
 .toolbar-layout {
     border-spacing: 0;
     border: 0;
-    margin: 0;
     padding: 0;
-
-    & ~ .toolbar-layout {
-        margin-top: $toolbar-spacing;
-    }
+    margin: 0;
+    margin-bottom: $toolbar-spacing;
 }
 
 .toolbar-row {
@@ -14,7 +11,7 @@
     margin: 0;
     padding: 0;
 
-    & ~ .toolbar-row {
+    &~.toolbar-row {
         margin-top: $toolbar-spacing;
     }
 }
@@ -34,18 +31,18 @@
         width: 100%;
     }
 
-    & > .btn-icon:first-child:nth-last-child(2) {
+    &>.btn-icon:first-child:nth-last-child(2) {
         margin-right: 0;
         border-right: 1px solid transparent;
         @include border-radius($button-border-radius 0 0 $button-border-radius);
     }
 
-    & > .btn-icon:first-child:nth-last-child(2) ~ .btn-icon {
+    &>.btn-icon:first-child:nth-last-child(2)~.btn-icon {
         margin-left: 0;
         @include border-radius(0 $button-border-radius $button-border-radius 0);
     }
 
-    & > .btn-icon:first-child:nth-last-child(2):hover ~ .btn-icon {
+    &>.btn-icon:first-child:nth-last-child(2):hover~.btn-icon {
         border-left: 1px solid $button-border-hover-color;
     }
 }
