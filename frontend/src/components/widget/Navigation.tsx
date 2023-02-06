@@ -1,13 +1,17 @@
-import React, { Component } from "react";
+import React from "react"
+import classNames from "classnames"
+import { ButtonIcon } from "./Button"
 
-export default class Navigation extends Component {
-    render(): React.ReactNode {
-        return <nav className="navigation">
-            <div className="navigation-action-list">
-            <button className="navigation-action-item icomoon ic-message-outline" aria-label="Notification"></button>
-            <button className="navigation-action-item icomoon ic-user-outline" aria-label="Person"></button>
-            <button className="navigation-action-item icomoon ic-search-outline" aria-label="Search"></button>
-            </div>
-        </nav>
-    }
+export default class Navigation extends
+  React.Component<React.HTMLAttributes<HTMLDivElement>>
+{
+  render(): React.ReactNode {
+    return <div className={classNames("navigation", this.props.className)}>
+      <div className="navigation-action-list">
+        <ButtonIcon className="navigation-action-item" icon="ic-message-outline" />
+        <ButtonIcon className="navigation-action-item" icon="ic-user-outline" />
+        <ButtonIcon className="navigation-action-item" icon="ic-search-outline" />
+      </div>
+    </div>
+  }
 }

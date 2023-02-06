@@ -10,6 +10,7 @@
     cursor: pointer;
 
     @include border-radius($button-border-radius);
+    @include user-select(none);
 
     &:hover {
         border: 1px solid $button-border-hover-color;

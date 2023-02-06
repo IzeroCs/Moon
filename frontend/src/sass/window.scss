@@ -8,10 +8,7 @@
     right: 0;
     height: calc(100vh - #{$navigation-height});
 
-    @include box-shadow(
-        -#{$window-box-shadow-offset} -#{$window-box-shadow-offset}
-        #{$window-box-shadow-blur} #{$window-box-shadow-color}
-    );
+    @include box-shadow(-#{$window-box-shadow-offset} -#{$window-box-shadow-offset} #{$window-box-shadow-blur} #{$window-box-shadow-color});
 }
 
 .window-content-wrapper {
@@ -27,11 +24,9 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    @include scrollbars(
-        $window-content-scrollbar-size,
+    @include scrollbars($window-content-scrollbar-size,
         $window-content-scrollbar-foreground-color,
-        $window-content-scrollbar-background-color
-    );
+        $window-content-scrollbar-background-color );
 }
 
 .window-titlebars {
@@ -39,6 +34,8 @@
     border-bottom: #{$window-titlebars-border-width} solid #{$window-titlebars-border-color};
     align-items: center;
     height: $window-titlebars-height;
+
+    @include user-select(none);
 }
 
 .window-titlebars-title {
@@ -119,11 +116,9 @@
     align-self: stretch;
     overflow-y: auto;
 
-    @include scrollbars(
-        $window-sidebar-layout-scrollbar-size,
+    @include scrollbars($window-sidebar-layout-scrollbar-size,
         $window-sidebar-layout-scrollbar-foreground-color,
-        $window-sidebar-layout-scrollbar-background-color
-    );
+        $window-sidebar-layout-scrollbar-background-color );
 }
 
 .window-sidebar-content {

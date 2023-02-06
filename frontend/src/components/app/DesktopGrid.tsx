@@ -1,11 +1,14 @@
-import React, { Component } from "react";
-import IconFolder from "../../assets/icon/svg/icon-folder.svg";
-import IconSetting from "../../assets/icon/svg/icon-setting.svg";
-import IconAbout from "../../assets/icon/svg/icon-about.svg";
+import React from "react"
+import classNames from "classnames"
+import IconFolder from "../../assets/icon/svg/icon-folder.svg"
+import IconSetting from "../../assets/icon/svg/icon-setting.svg"
+import IconAbout from "../../assets/icon/svg/icon-about.svg"
 
-export default class DesktopGrid extends Component {
+export default class DesktopGrid extends
+  React.Component<React.HTMLAttributes<HTMLUListElement>>
+{
   render(): React.ReactNode {
-    return <ul className="desktop-grid">
+    return <ul className={classNames("desktop-grid", this.props.className)}>
       <li className="desktop-grid-item" data-item="file-station">
         <img src={ IconFolder } className="desktop-grid-icon" alt="Folder" />
         <p className="desktop-grid-label">File Station</p>

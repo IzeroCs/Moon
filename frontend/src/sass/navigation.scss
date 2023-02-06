@@ -30,10 +30,13 @@
     color: $navigation-action-item-color;
     background: transparent;
     border: 0;
-    margin-right: 15px;
+    margin-right: 10px;
     outline: 0;
-    font-size: 1.5rem;
     cursor: pointer;
+
+    &.btn-icon {
+        font-size: 1.3rem;
+    }
 
     &:hover {
         color: $navigation-action-item-hover-color;

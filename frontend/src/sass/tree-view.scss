@@ -54,4 +54,6 @@ li.tree-node {
     font-size: 0.85rem;
     display: inline-block;
     align-self: center;
+
+    @include user-select(none);
 }

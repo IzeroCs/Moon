@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Create directory",
+    "icon": "ic-folder",
+    "disabled": false
+  },
+  {
+    "name": "About current directory",
+    "disabled": true,
+    "divider": true
+  },
+  {
+    "name": "Create shared folder",
+    "icon": "ic-search"
+  },
+  {
+    "name": "Mount",
+    "disabled": false,
+    "icon": "ic-about",
+    "subs": [
+      {
+        "name": "Mount disk"
+      },
+      {
+        "name": "Mount network"
+      },
+      {
+        "name": "Mount domain",
+        "disabled": true
+      }
+    ]
+  }
+]

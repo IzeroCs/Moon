@@ -1,10 +1,10 @@
-.toolbar {
+.toolbar-layout {
     border-spacing: 0;
     border: 0;
     margin: 0;
     padding: 0;
 
-    & ~ .toolbar {
+    & ~ .toolbar-layout {
         margin-top: $toolbar-spacing;
     }
 }

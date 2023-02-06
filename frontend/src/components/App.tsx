@@ -1,12 +1,12 @@
-import React from "react";
-import Navigation from "./widget/Navigation";
-import DesktopGrid from "./app/DesktopGrid";
-import FileStation from "./app/FileStation";
-import "../sass/app.scss";
+import React from "react"
+import Navigation from "./widget/Navigation"
+import DesktopGrid from "./app/DesktopGrid"
+import FileStation from "./app/FileStation"
+import "../sass/app.scss"
 
 interface IAppState {
-  windowWidth: number;
-  windowHeight: number;
+  windowWidth: number
+  windowHeight: number
 }
 
 export default class App extends React.Component<{}, IAppState> {
