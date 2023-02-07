@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?h50jxj');
-  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?h50jxj#iefix') format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?h50jxj') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?h50jxj') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?h50jxj##{$icomoon-font-family}') format('svg');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?xel1hz');
+  src:  url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?xel1hz#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?xel1hz') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?xel1hz') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?xel1hz##{$icomoon-font-family}') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,123 +27,134 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.ic-security-outline {
+  &:before {
+    content: $ic-security-outline; 
+  }
+}
 .ic-user-outline {
   &:before {
-    content: $ic-user-outline;
-  }
-}
-.ic-message-outline {
-  &:before {
-    content: $ic-message-outline;
-  }
-}
-.ic-search-outline {
-  &:before {
-    content: $ic-search-outline;
-  }
-}
-.ic-refresh {
-  &:before {
-    content: $ic-refresh;
-  }
-}
-.ic-window-maximize {
-  &:before {
-    content: $ic-window-maximize;
-  }
-}
-.ic-window-close {
-  &:before {
-    content: $ic-window-close;
-  }
-}
-.ic-window-restore {
-  &:before {
-    content: $ic-window-restore;
-  }
-}
-.ic-window-minimize {
-  &:before {
-    content: $ic-window-minimize;
+    content: $ic-user-outline; 
   }
 }
 .ic-notification {
   &:before {
-    content: $ic-notification;
+    content: $ic-notification; 
   }
 }
 .ic-arrow-outline-down {
   &:before {
-    content: $ic-arrow-outline-down;
+    content: $ic-arrow-outline-down; 
   }
 }
 .ic-arrow-outline-left {
   &:before {
-    content: $ic-arrow-outline-left;
+    content: $ic-arrow-outline-left; 
   }
 }
 .ic-arrow-outline-right {
   &:before {
-    content: $ic-arrow-outline-right;
+    content: $ic-arrow-outline-right; 
   }
 }
 .ic-arrow-outline-up {
   &:before {
-    content: $ic-arrow-outline-up;
+    content: $ic-arrow-outline-up; 
   }
 }
 .ic-zero {
   &:before {
-    content: $ic-zero;
+    content: $ic-zero; 
   }
 }
 .ic-arrow-fill-down {
   &:before {
-    content: $ic-arrow-fill-down;
+    content: $ic-arrow-fill-down; 
   }
 }
 .ic-arrow-fill-up {
   &:before {
-    content: $ic-arrow-fill-up;
+    content: $ic-arrow-fill-up; 
   }
 }
 .ic-arrow-fill-left {
   &:before {
-    content: $ic-arrow-fill-left;
+    content: $ic-arrow-fill-left; 
   }
 }
 .ic-arrow-fill-right {
   &:before {
-    content: $ic-arrow-fill-right;
+    content: $ic-arrow-fill-right; 
   }
 }
 .ic-arrow-back {
   &:before {
-    content: $ic-arrow-back;
+    content: $ic-arrow-back; 
   }
 }
 .ic-arrow-forward {
   &:before {
-    content: $ic-arrow-forward;
+    content: $ic-arrow-forward; 
   }
 }
 .ic-person {
   &:before {
-    content: $ic-person;
+    content: $ic-person; 
   }
 }
 .ic-search {
   &:before {
-    content: $ic-search;
+    content: $ic-search; 
+  }
+}
+.ic-navigation-user-outline {
+  &:before {
+    content: $ic-navigation-user-outline; 
+  }
+}
+.ic-navigation-message-outline {
+  &:before {
+    content: $ic-navigation-message-outline; 
+  }
+}
+.ic-navigation-search-outline {
+  &:before {
+    content: $ic-navigation-search-outline; 
+  }
+}
+.ic-refresh {
+  &:before {
+    content: $ic-refresh; 
+  }
+}
+.ic-window-maximize {
+  &:before {
+    content: $ic-window-maximize; 
+  }
+}
+.ic-window-close {
+  &:before {
+    content: $ic-window-close; 
+  }
+}
+.ic-window-restore {
+  &:before {
+    content: $ic-window-restore; 
+  }
+}
+.ic-window-minimize {
+  &:before {
+    content: $ic-window-minimize; 
   }
 }
 .ic-folder {
   &:before {
-    content: $ic-folder;
+    content: $ic-folder; 
   }
 }
 .ic-about {
   &:before {
-    content: $ic-about;
+    content: $ic-about; 
   }
 }
+

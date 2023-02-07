@@ -8,7 +8,23 @@ input {
 
     @include border-radius($input-border-radius);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         border: 1px solid $input-border-hover-color;
+    }
+}
+
+.input {
+    height: 33px;
+}
+
+.input-field {
+    &-icon {
+        color: #aaa;
+    }
+
+    &-icon.path {
+        width: 24px;
+        height: 24px;
     }
 }

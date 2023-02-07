@@ -39,7 +39,7 @@ const WindowContent: React.FC<React.HTMLAttributes<HTMLDivElement>> =
           " - var(--toolbar-height) - 10px - " + childHeight + "px")
         window.dispatchEvent(new Event("resize"))
       }
-    })
+    }, [contentHeight])
 
     return <div
       className={classNames("window-content-wrapper",
