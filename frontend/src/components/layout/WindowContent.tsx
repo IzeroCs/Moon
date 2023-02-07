@@ -1,68 +1,54 @@
-import React from "react"
+import React, { useEffect, useRef, useState } from "react"
 import classNames from "classnames"
 
-interface IWindowContentProps extends React.PropsWithChildren { }
-interface IWindowContentState {
-  contentHeight: string
-}
+const WindowContent: React.FC<React.HTMLAttributes<HTMLDivElement>> =
+  (props) => {
+    const [contentHeight, setContentHeight] = useState("0px")
+    const wrapperRef = useRef<HTMLDivElement>(null)
 
-export default class WindowContent extends
-  React.Component<IWindowContentProps &
-    React.HTMLAttributes<HTMLDivElement>, IWindowContentState>
-{
-  wrapperRef: React.RefObject<HTMLDivElement>
+    useEffect(() => {
+      const target = wrapperRef.current
 
-  constructor(props: IWindowContentProps) {
-    super(props)
-    this.state = { contentHeight: "0px" }
-    this.wrapperRef = React.createRef()
-  }
+      if (target) {
+        const parent = target.parentElement!!
+        const childCount = parent.childElementCount
+        const childElements = parent?.children
+        const parentStyle = window.getComputedStyle(parent)
 
-  componentDidMount(): void {
-    const target = this.wrapperRef.current
+        let child: any
+        let childHeight = parseInt(parentStyle
+          .paddingTop.replace("px", ""))
 
-    if (target) {
-      const parent = target.parentElement!!
-      const childCount = parent.childElementCount
-      const childElements = parent?.children
-      const parentStyle = window.getComputedStyle(parent)
+        for (let i = 0; i < childCount; ++i) {
+          child = childElements[i]
 
-      let child: any
-      let childHeight = parseInt(parentStyle
-        .paddingTop.replace("px", ""))
+          if (child !== target) {
+            childHeight += child.offsetHeight
 
-      for (let i = 0; i < childCount; ++i) {
-        child = childElements[i]
+            const childStyle = window.getComputedStyle(child)
+            const childMarginTop = parseInt(childStyle.marginTop.replace("px", ""))
+            const childMarginBottom = parseInt(childStyle.marginBottom.replace("px", ""))
 
-        if (child !== target) {
-          childHeight += child.offsetHeight
-
-          const childStyle = window.getComputedStyle(child)
-          const childMarginTop = parseInt(childStyle.marginTop.replace("px", ""))
-          const childMarginBottom = parseInt(childStyle.marginBottom.replace("px", ""))
-
-          childHeight += childMarginTop + childMarginBottom
-        } else {
-          break
+            childHeight += childMarginTop + childMarginBottom
+          } else {
+            break
+          }
         }
+
+        setContentHeight("calc(100vh - var(--navigation-height)" +
+          " - var(--toolbar-height) - 10px - " + childHeight + "px")
+        window.dispatchEvent(new Event("resize"))
       }
+    })
 
-      this.setState({
-        contentHeight: "calc(100vh - var(--navigation-height)" +
-          " - var(--toolbar-height) - 10px - " + childHeight + "px"
-      })
-      window.dispatchEvent(new Event("resize"))
-    }
-  }
-
-  render(): React.ReactNode {
     return <div
       className={classNames("window-content-wrapper",
-        this.props.className)}
-      style={{ height: this.state.contentHeight }}
-      ref={this.wrapperRef}
+        props.className)}
+      style={{ height: contentHeight }}
+      ref={wrapperRef}
     >
-      <div className="window-content">{this.props.children}</div>
+      <div className="window-content">{props.children}</div>
     </div>
   }
-}
+
+export default WindowContent

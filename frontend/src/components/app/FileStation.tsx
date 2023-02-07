@@ -4,7 +4,7 @@ import WindowContent from "../layout/WindowContent"
 import SidebarLayout from "../layout/SidebarLayout"
 import SidebarContent from "../layout/SidebarContent"
 import TreeView from "../widget/TreeView"
-import ToolbarLayout, { ToolbarCell } from "../layout/ToolbarLayout"
+import { ToolbarLayout, ToolbarCell } from "../layout/ToolbarLayout"
 import { ButtonIcon, ButtonText } from "../widget/Button"
 import Breadcrumb from "../widget/Breadcrumb"
 import Dropdown from "../widget/Dropdown"
@@ -13,7 +13,7 @@ import IconFolder from "../../assets/icon/svg/icon-folder.svg"
 import TreeViewData from "../../tree-view.json"
 import BreadcrumbData from "../../breadcrumb.json"
 import DropdownData from "../../dropdown.json"
-import { ListViewColumnSize } from "../widget/ListViewAdapter"
+import { ListViewColumnSize } from "../widget/list-view/ListViewAdapter"
 
 const listColumnsData = [
   { label: "Name" },
@@ -22,9 +22,8 @@ const listColumnsData = [
   { label: "Owner", size: ListViewColumnSize.LARGE }
 ]
 
-export default class FileStation extends
-  React.Component {
-  render(): React.ReactNode {
+const FileStation: React.FC =
+  () => {
     return <WindowLayout
       icon={IconFolder}
       title="File Staion"
@@ -74,4 +73,5 @@ export default class FileStation extends
       </SidebarContent>
     </WindowLayout>
   }
-}
+
+export default FileStation

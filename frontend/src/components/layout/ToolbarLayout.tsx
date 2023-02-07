@@ -1,27 +1,22 @@
-import classNames from "classnames"
 import React from "react"
+import classNames from "classnames"
 
-interface IToolbarLayoutProps extends React.PropsWithChildren { }
-interface IToolbarCellProps extends React.PropsWithChildren { }
+// interface IToolbarLayoutProps extends React.PropsWithChildren { }
+// interface IToolbarCellProps extends React.PropsWithChildren { }
 
-export class ToolbarCell extends
-  React.Component<IToolbarCellProps &
-    React.HTMLAttributes<HTMLTableCellElement>>
-{
-  render(): React.ReactNode {
+const ToolbarCell: React.FC<React.HTMLAttributes<HTMLTableCellElement>> =
+  (props) => {
     return <td className={classNames("toolbar-cell",
-      this.props.className)}>{this.props.children}</td>
+      props.className)}>{props.children}</td>
   }
-}
 
-export default class ToolbarLayout extends
-  React.Component<IToolbarLayoutProps & React.HTMLAttributes<HTMLTableElement>>
-{
-  render(): React.ReactNode {
+const ToolbarLayout: React.FC<React.HTMLAttributes<HTMLTableElement>> =
+  (props) => {
     return <table className={classNames("toolbar-layout",
-      this.props.className)}
+      props.className)}
     >
-      <thead><tr className="toolbar-row">{this.props.children}</tr></thead>
+      <thead><tr className="toolbar-row">{props.children}</tr></thead>
     </table>
   }
-}
+
+export { ToolbarCell, ToolbarLayout }

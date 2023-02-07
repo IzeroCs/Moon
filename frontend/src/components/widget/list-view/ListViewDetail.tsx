@@ -4,17 +4,12 @@ import classNames from "classnames"
 import {
   ListViewAdapter,
   ListViewColumnSize
-} from "../ListViewAdapter"
+} from "./ListViewAdapter"
 
-interface IListViewDetailProps extends React.PropsWithChildren { }
-interface IListViewDetailState { }
-
-export default class ListDetail extends
-  ListViewAdapter<IListViewDetailProps &
-    React.HTMLAttributes<HTMLTableElement>, IListViewDetailState>
-{
-  render(): React.ReactNode {
-    const listColumnsFilter = this.props.listColumns
+const ListViewDetail: ListViewAdapter<React
+  .HTMLAttributes<HTMLDivElement>> =
+  (props) => {
+    const listColumnsFilter = props.listColumns
       .filter(col => typeof col.isVisible === "undefined" || col.isVisible === true)
     const isHasColumnSizeStretch = listColumnsFilter
       .find(col => col.size === ListViewColumnSize.STRETCH)
@@ -52,4 +47,5 @@ export default class ListDetail extends
       </Scrollbar>
     </div>
   }
-}
+
+export default ListViewDetail

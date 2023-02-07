@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import classNames from "classnames"
 
 export interface IDropdownEntryItem {
@@ -14,100 +14,78 @@ export interface IDropdownSubEntryItem {
   icon?: string
 }
 
-export type OnCloseCallback = (entry: IDropdownEntryItem, index: number) => any
-
-interface IDropdownEntryProps extends React.PropsWithChildren {
+type OnCloseCallback = (entry: IDropdownEntryItem, index: number) => any
+type DropdownEntryProps = {
   index: number
   entry: IDropdownEntryItem
   onClose: OnCloseCallback
 }
-
-interface IDropdownProps extends React.PropsWithChildren {
+type DropdownProps = {
   id: string
   label?: string
   lists?: Array<IDropdownEntryItem>
 }
 
-interface IDropdownState {
-  isOpen: boolean
-}
-
-export class DropdownEntry extends
-  React.Component<IDropdownEntryProps &
-    React.HTMLAttributes<HTMLDivElement>>
-{
-  render(): React.ReactNode {
+const DropdownEntry: React.FC<DropdownEntryProps &
+  React.HTMLAttributes<HTMLDivElement>> =
+  (props) => {
     return <div
-      className={classNames("dropdown-item", this.props.className)}
-      onClick={this.props.onClose.bind(this, this.props.entry, this.props.index)}
-    >{this.props.children}</div>
-  }
-}
-
-export default class Dropdown extends
-  React.Component<IDropdownProps &
-    React.HTMLAttributes<HTMLDivElement>, IDropdownState>
-{
-  constructor(props: IDropdownProps) {
-    super(props)
-    this.state = { isOpen: false }
+      className={classNames("dropdown-item", props.className)}
+      onClick={props.onClose.bind(this, props.entry, props.index)}
+    >{props.children}</div>
   }
 
-  componentDidMount(): void {
-    window.addEventListener("click", this.checkClickOn.bind(this))
-  }
+const Dropdown: React.FC<DropdownProps &
+  React.HTMLAttributes<HTMLDivElement>> = (props) => {
+    const [isOpen, setOpen] = useState(false)
 
-  componentWillUnmount(): void {
-    window.removeEventListener("click", this.checkClickOn)
-  }
+    function checkClickOn(event: any) {
+      if (!document.getElementById(props.id)?.contains(event.target))
+        setOpen(false)
+    }
 
-  dispatchClose() {
-    this.setState({ isOpen: false })
-  }
+    function toggle() {
+      setOpen(!isOpen)
+    }
 
-  toggle() {
-    this.setState({ isOpen: !this.state.isOpen })
-  }
+    function onClickEntryItem(entry: IDropdownEntryItem, index: number) {
+      if (!entry.subs)
+        setOpen(false)
+    }
 
-  checkClickOn(event: any) {
-    if (!document.getElementById(this.props.id)?.contains(event.target))
-      this.dispatchClose()
-  }
+    function onClickSubEntryItem(event: any,
+      entry: IDropdownEntryItem, index: number,
+      subEntry: IDropdownSubEntryItem, subIndex: number) {
+      setOpen(false)
+      event.stopPropagation()
+      event.preventDefault()
+    }
 
-  onClickEntryItem(entry: IDropdownEntryItem, index: number) {
-    if (!entry.subs)
-      this.dispatchClose()
-  }
+    useEffect(() => {
+      window.addEventListener("click", checkClickOn)
+      return () => window.removeEventListener("click", checkClickOn)
+    })
 
-  onClickSubEntryItem(event: any,
-    entry: IDropdownEntryItem, index: number,
-    subEntry: IDropdownSubEntryItem, subIndex: number) {
-    this.dispatchClose()
-    event.stopPropagation()
-    event.preventDefault()
-  }
-
-  render(): React.ReactNode {
-    return <div id={this.props.id} className={classNames("dropdown",
-      this.props.className)}
+    return <div id={props.id} className={classNames("dropdown",
+      props.className)}
     >
       <button
-        onClick={this.toggle.bind(this)}
+        onClick={toggle}
         className={classNames({
           "btn": true, "btn-dropdown": true,
-          "btn-dropdown-arrow": true, "isActive": this.state.isOpen
+          "btn-dropdown-arrow": true, "isActive": isOpen
         })}
       >
-        {this.props.label ? <span>{this.props.label}</span> : this.props.children}
+        {props.label ? <span>{props.label}</span> : props.children}
       </button>
 
-      {this.state.isOpen && <div className="dropdown-list">
-        {this.props.lists?.map((entry, index) => {
+      {isOpen && <div className="dropdown-list">
+        {props.lists?.map((entry, index) => {
           return <DropdownEntry
             key={index}
             index={index}
             entry={entry}
-            onClose={this.onClickEntryItem.bind(this)}
+            onClose={onClickEntryItem}
             className={classNames({
               "disabled": entry.disabled,
               "divider": entry.divider,
@@ -122,7 +100,7 @@ export default class Dropdown extends
                 return <div
                   key={subIndex}
                   className="dropdown-sub-item"
-                  onClick={(event) => this.onClickSubEntryItem(event,
+                  onClick={(event) => onClickSubEntryItem(event,
                     entry, index, subEntry, subIndex)}
                 >
                   <span className="dropdown-label">{subEntry.name}</span>
@@ -134,4 +112,5 @@ export default class Dropdown extends
       </div>}
     </div>
   }
-}
+
+export default Dropdown
