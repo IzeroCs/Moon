@@ -43,11 +43,11 @@ export default class App extends React.Component<{}, IAppState> {
       className="bg-cover"
       style={{ height: this.state.windowHeight + "px" }}
     >
-      <Navigation/>
+      <Navigation />
       <div className="bg-overlay"></div>
       <div className="container-wrapper">
-        <DesktopGrid/>
-        <FileStation/>
+        <DesktopGrid />
+        <FileStation />
       </div>
     </div>
   }

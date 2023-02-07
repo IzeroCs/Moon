@@ -22,11 +22,7 @@
     left: 0;
     right: 0;
     overflow-x: hidden;
-    overflow-y: auto;
-
-    @include scrollbars($window-content-scrollbar-size,
-        $window-content-scrollbar-foreground-color,
-        $window-content-scrollbar-background-color );
+    overflow-y: hidden;
 }
 
 .window-titlebars {
@@ -114,11 +110,7 @@
     flex-grow: 1;
     position: relative;
     align-self: stretch;
-    overflow-y: auto;
-
-    @include scrollbars($window-sidebar-layout-scrollbar-size,
-        $window-sidebar-layout-scrollbar-foreground-color,
-        $window-sidebar-layout-scrollbar-background-color);
+    overflow-y: hidden;
 }
 
 .window-sidebar-content {

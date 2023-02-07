@@ -2,7 +2,7 @@ $icomoon-font-path: "../../assets/fonts/icomoon" !default;
 
 $border-radius-default: 4px;
 $transition-default: 0.3s;
-$scrollbar-size-default: 6px;
+$scrollbar-size: 6px;
 
 $button-border-radius: $border-radius-default;
 
@@ -13,8 +13,6 @@ $window-titlebars-height: 40px;
 $window-titlebars-border-width: 1px;
 $window-box-shadow-offset: 3px;
 $window-box-shadow-blur: 10px;
-$window-sidebar-layout-scrollbar-size: $scrollbar-size-default;
-$window-content-scrollbar-size: $scrollbar-size-default;
 
 $navigation-height: 40px;
 $navigation-box-shadow-offset: 2px;
@@ -42,4 +40,4 @@ $dropdown-parent-sub-spacing: 15px;
 $desktop-grid-icon-size: 56px;
 $desktop-grid-spacing: 10px;
 
-$list-view-scrollbar-size: $scrollbar-size-default
+$list-view-scrollbar-size: $scrollbar-size
