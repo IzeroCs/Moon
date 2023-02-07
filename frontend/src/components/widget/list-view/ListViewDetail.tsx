@@ -2,6 +2,7 @@ import React from "react"
 import {
   ListViewAdapter, ListViewColumnSize
 } from "../ListViewAdapter"
+import ScrollView from "../ScrollView"
 
 interface IListViewDetailProps extends React.PropsWithChildren { }
 interface IListViewDetailState {
@@ -14,33 +15,33 @@ export default class ListDetail extends
   ListViewAdapter<IListViewDetailProps &
     React.HTMLAttributes<HTMLTableElement>, IListViewDetailState>
 {
-  wrapperRef: React.RefObject<HTMLTableElement>
-  headerRef: React.RefObject<HTMLTableSectionElement>
+  // wrapperRef: React.RefObject<HTMLTableElement>
+  // headerRef: React.RefObject<HTMLTableSectionElement>
 
   constructor(props: any) {
     super(props)
-    this.wrapperRef = React.createRef()
-    this.headerRef = React.createRef()
-    this.state = {
-      bodyHeight: 0,
-      scrollbarHeight: 0, scrollbarTop: 0
-    }
+    // this.wrapperRef = React.createRef()
+    // this.headerRef = React.createRef()
+    // this.state = {
+    //   bodyHeight: 0,
+    //   scrollbarHeight: 0, scrollbarTop: 0
+    // }
   }
 
   dispatchSize() {
-    const wrapperHeight = this.wrapperRef.current?.clientHeight
-    const wrapperWidth = this.wrapperRef.current?.clientWidth
-    const headerHeight = this.headerRef.current?.clientHeight
+    // const wrapperHeight = this.wrapperRef.current?.clientHeight
+    // const wrapperWidth = this.wrapperRef.current?.clientWidth
+    // const headerHeight = this.headerRef.current?.clientHeight
 
-    if (wrapperHeight && wrapperWidth && headerHeight) {
-      this.setState({
-        bodyHeight: wrapperHeight - headerHeight
-      })
-      const child = this.wrapperRef.current?.children[0]
-      const bound = child?.getBoundingClientRect()
+    // if (wrapperHeight && wrapperWidth && headerHeight) {
+    //   this.setState({
+    //     bodyHeight: wrapperHeight - headerHeight
+    //   })
+    //   const child = this.wrapperRef.current?.children[0]
+    // const bound = child?.getBoundingClientRect()
 
-      console.log(child?.scrollTop)
-    }
+    // console.log(child?.scrollTop)
+    // }
   }
 
   wrapper(e: any) {
@@ -54,23 +55,23 @@ export default class ListDetail extends
 
   componentDidMount(): void {
     window.addEventListener("resize", this.dispatchSize.bind(this))
-    this.wrapperRef.current?.childNodes[0].addEventListener("scroll", this.wrapper.bind(this))
+    // this.wrapperRef.current?.childNodes[0].addEventListener("scroll", this.wrapper.bind(this))
   }
 
   componentWillUnmount(): void {
     window.removeEventListener("resize", this.dispatchSize)
-    this.wrapperRef.current?.childNodes[0].removeEventListener("scroll", this.wrapper)
+    // this.wrapperRef.current?.childNodes[0].removeEventListener("scroll", this.wrapper)
   }
 
   componentDidUpdate(prevProps: Readonly<IListViewDetailProps &
     React.HTMLAttributes<HTMLTableElement>>,
     prevState: Readonly<IListViewDetailState>,
     snapshot?: any): void {
-    const wrapperHeight = this.wrapperRef.current?.clientHeight
+    // const wrapperHeight = this.wrapperRef.current?.clientHeight
 
-    if (wrapperHeight && prevState.bodyHeight != wrapperHeight) {
-      this.setState({ bodyHeight: wrapperHeight })
-    }
+    // if (wrapperHeight && prevState.bodyHeight != wrapperHeight) {
+    //   this.setState({ bodyHeight: wrapperHeight })
+    // }
   }
 
   render(): React.ReactNode {
@@ -80,13 +81,13 @@ export default class ListDetail extends
       .find(col => col.size == ListViewColumnSize.STRETCH)
 
     return <div className="list-view-detail">
-      <div className="list-view-detail-header-row" ref={this.headerRef}>
+      <div className="list-view-detail-header-row">
         <div className="list-view-detail-header-cell stretch">Name</div>
         <div className="list-view-detail-header-cell small">Size</div>
         <div className="list-view-detail-header-cell medium">FileType</div>
         <div className="list-view-detail-header-cell large">Owner</div>
       </div>
-      <div className="list-view-detail-body-wrapper" ref={this.wrapperRef}>
+      <ScrollView>
         <div className="list-view-detail-body">
           {Array(6).fill(undefined).map((v, i) => {
             return <div className="list-view-detail-body-row" key={i}>
@@ -97,11 +98,7 @@ export default class ListDetail extends
             </div>
           })}
         </div>
-        <div className="scrollbar" style={{
-          height: this.state.scrollbarHeight + "px",
-          top: this.state.scrollbarTop + "px"
-        }}></div>
-      </div>
+      </ScrollView>
     </div>
 
     // return <table className={classNames("list-view-detail",

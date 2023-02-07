@@ -79,10 +79,12 @@ export default class Dropdown extends
       this.dispatchClose()
   }
 
-  onClickSubEntryItem(
+  onClickSubEntryItem(event: any,
     entry: IDropdownEntryItem, index: number,
     subEntry: IDropdownSubEntryItem, subIndex: number) {
     this.dispatchClose()
+    event.stopPropagation()
+    event.preventDefault()
   }
 
   render(): React.ReactNode {
@@ -120,8 +122,8 @@ export default class Dropdown extends
                 return <div
                   key={subIndex}
                   className="dropdown-sub-item"
-                  onClick={this.onClickSubEntryItem
-                    .bind(this, entry, index, subEntry, subIndex)}
+                  onClick={(event) => this.onClickSubEntryItem(event,
+                    entry, index, subEntry, subIndex)}
                 >
                   <span className="dropdown-label">{subEntry.name}</span>
                 </div>

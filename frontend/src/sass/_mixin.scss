@@ -18,22 +18,22 @@
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
 }
 
 @mixin transition($transition...) {
- -webkit-transition: $transition;
- transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
 }
 
 @mixin translate($x, $y) {
   -webkit-transform: translate($x, $y);
-     -moz-transform: translate($x, $y);
-      -ms-transform: translate($x, $y);
-       -o-transform: translate($x, $y);
-          transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
 }
 
 @mixin user-select($val) {
@@ -52,14 +52,14 @@
 
 @mixin filter($value) {
   -webkit-filter: $value;
-     -moz-filter: $value;
-       -o-filter: $value;
-          filter: $value;
+  -moz-filter: $value;
+  -o-filter: $value;
+  filter: $value;
 }
 
-@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
   &::-webkit-scrollbar {
-    width:  $size;
+    width: $size;
     height: $size;
   }
 
@@ -73,6 +73,8 @@
   }
 
   & {
+    scrollbar-color: $foreground-color $background-color;
+    scrollbar-width: $size;
     scrollbar-face-color: $foreground-color;
     scrollbar-track-color: $background-color;
   }
