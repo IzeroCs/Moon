@@ -21,20 +21,26 @@ const Login: React.FC<React.HTMLAttributes<HTMLDivElement>> =
       if (usernameRef.current !== null &&
         passwordRef.current != null &&
         event.target != null) {
-        // const usernameElement = usernameRef.current
-        // const passwordElement = passwordRef.current
-        // const buttonElement: HTMLButtonElement = event.target
+        const usernameElement = usernameRef.current
+        const passwordElement = passwordRef.current
+        const buttonElement: HTMLButtonElement = event.target
 
-        // usernameElement.classList.add("disabled")
-        // passwordElement.classList.add("disabled")
-        // buttonElement.classList.add("logging")
+        usernameElement.classList.add("disabled")
+        passwordElement.classList.add("disabled")
+        buttonElement.classList.add("logging")
 
-        Person.login("admin", "admin")
-          .then(res => { console.log(res) })
-          .catch(err => {
-            if (err.code && err.code === "ERR_NETWORK")
-              setError(t("axios_err_network")!!)
-          })
+        setTimeout(() => {
+          Person.login("admin", "admin")
+            .then(res => { console.log(res) })
+            .catch(err => {
+              if (err.code && err.code === "ERR_NETWORK")
+                setError(t("axios_err_network")!!)
+
+              usernameElement.classList.remove("disabled")
+              passwordElement.classList.remove("disabled")
+              buttonElement.classList.remove("logging")
+            })
+        }, 500)
       }
     }
 
