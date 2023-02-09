@@ -10,28 +10,79 @@
     top: 50%;
     left: 50%;
     width: 300px;
-    height: 300px;
+    padding-bottom: 60px;
 
-    @include box-shadow(2px 2px 5px rgba(0, 0, 0, 0.1));
+    @include box-shadow(2px 2px 10px rgba(0, 0, 0, 0.8));
     @include border-radius(4px);
     @include translate(-50%, -50%);
 }
 
 .login-title {
     color: $highlight-color;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    padding: 20px;
+    padding: 30px 20px;
     margin: 0;
     margin-bottom: 10px;
+    position: relative;
+    text-align: center;
+}
+
+.login-error:not(:empty) {
+    color: $error-message-color;
+    display: inline-block;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
 }
 
 .login-form {
     text-align: center;
 }
 
-.login-input {
-    height: 44px;
-    width: 90%;
-    margin-bottom: 10px;
+@include keyframes(login-button-spinner) {
+    to {
+        @include rotate(360);
+    }
+}
+
+.login-button {
+    background-color: $highlight-color;
+    border: 0;
+    position: absolute;
+    height: 40px;
+    bottom: -20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    left: 50%;
+
+    @include translate(-50%, 0);
+    @include box-shadow(3px 3px 10px rgba(0, 0, 0, 0.5));
+    @include border-radius(4px);
+    @include transition(0.5s background-color);
+
+    &>.icomoon {
+        display: inline-block;
+        color: #fff;
+        font-size: 1.2rem;
+        pointer-events: none;
+    }
+
+    &.logging {
+        background-color: $disable-highlight-color !important;
+        cursor: auto;
+        pointer-events: none;
+    }
+
+    &.logging .icomoon {
+        @include animation(login-button-spinner .6s ease-out infinite);
+
+        &::before {
+            content: $ic-spinner !important;
+        }
+    }
+
+    &:hover {
+        border: 0;
+        background-color: $hover-highlight-color;
+    }
 }

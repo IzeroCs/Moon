@@ -18,9 +18,48 @@ input {
     height: 33px;
 }
 
+.input-group {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .input-field {
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+    text-align: left;
+    margin-bottom: 15px;
+
+    @include border-radius(4px);
+
+    &>input {
+        color: #aaa;
+        display: inline-block;
+        background-color: transparent;
+        text-decoration: none;
+        flex-grow: 1;
+        border: 0;
+        padding: 22px 10px;
+        white-space: nowrap;
+
+        @include transition($input-transition color);
+
+        &:hover,
+        &:focus {
+            color: #555;
+        }
+    }
+
+    &.disabled {
+        background-color: #f0f0f0;
+        pointer-events: none;
+        cursor: auto;
+    }
+
     &-icon {
         color: #aaa;
+        margin-left: 10px;
+        font-size: 1.2rem;
     }
 
     &-icon.path {

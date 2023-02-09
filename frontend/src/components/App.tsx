@@ -4,11 +4,11 @@ import DesktopGrid from "./app/DesktopGrid"
 import FileStation from "./app/FileStation"
 import Login from "./app/Login"
 import { useAppSelector } from "../store/Hooks"
-import { AuthenticateSelector } from "../store/reducers/Authenticate"
+import { PersonSelector } from "../store/reducers/Person"
 import "../sass/app.scss"
 
 const App: React.FC = () => {
-  const isAuthentic = useAppSelector(AuthenticateSelector.isAuthentic)
+  const isAuthentic = useAppSelector(PersonSelector.isAuthentic)
   const [windowHeight, setWindowHeight] = useState(document
     .documentElement.clientHeight)
 

@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit"
-import Authenticate from "./reducers/Authenticate"
+import Person from "./reducers/Person"
 
 export const Store = configureStore({
   reducer: {
-    Authenticate
+    Person
   }
 })
 

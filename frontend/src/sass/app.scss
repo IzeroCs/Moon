@@ -53,10 +53,6 @@ textarea {
     line-height: inherit;
 }
 
-button {
-    @include border-radius(0);
-}
-
 #app {
     position: relative;
     margin: 0;
