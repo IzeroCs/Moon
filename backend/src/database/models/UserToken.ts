@@ -14,13 +14,10 @@ const userTokenSchema = new Schema<IUserToken>({
 })
 
 export default class UserToken {
-    public static readonly model = model<IUserToken>("UserToken", userTokenSchema)
+    public static readonly model = model<IUserToken>("User_Token", userTokenSchema)
 
-    public static async findOne(user: IUser, remove: boolean = false) {
-        const doc = await UserToken.model.findOne({ userId: user._id })
-        if (doc && remove)
-            doc.remove()
-        return doc
+    public static async findRemove(user: IUser) {
+        return await UserToken.model.find({ userId: user._id }).deleteMany()
     }
 
     public static async create(user: IUser, token: string) {

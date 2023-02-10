@@ -1,7 +1,7 @@
 import Keypair from "./boot/KeyPair"
 import DBConnect from "./database/Connect"
 import User from "./database/models/User"
-import SocketServer from "./socket.io/Server"
+import Api from "./api/Api"
 
 export default class Bootstrap {
     private static _instance: Bootstrap
@@ -19,6 +19,7 @@ export default class Bootstrap {
         await Keypair()
         await DBConnect()
         await User.createUserAdmin()
-        await SocketServer.getInstance().listen()
+        await Api.getInstance().attach()
+        await Api.getInstance().listen()
     }
 }

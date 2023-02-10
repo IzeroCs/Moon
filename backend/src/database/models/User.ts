@@ -1,5 +1,5 @@
 import { Schema, Document, model } from "mongoose"
-import Response, { Status } from "../../utils/Response"
+import Result, { Status } from "../../utils/Result"
 import Security from "../../utils/Security"
 import Logger from "../../utils/Logger"
 
@@ -22,6 +22,9 @@ const logger = Logger.create("DatabaseModelsUser")
 export default class User {
     public static readonly model = model<IUser>("User", userSchema)
 
+    public static readonly USERNAME_MIN_LENGTH = 5
+    public static readonly PASSWORD_MIN_LENGTH = 5
+
     public static async createUserAdmin() {
         if (!await this.findUsernameOrEmail("admin")) {
             const create = await User.create("admin", "admin", "admin@admin.com")
@@ -38,13 +41,13 @@ export default class User {
         ] })
 
         if (user) {
-            return Promise.reject(new Response(Status
+            return Promise.reject(Result.create(Status
                 .BadRequest, "Username or email give already exist"))
         }
 
         const hashPassword = await Security.encryptPassword(password)
         await new User.model({ username, password: hashPassword, email }).save()
-        return Promise.resolve(new Response(Status
+        return Promise.resolve(Result.create(Status
             .Created, "Account created sucessfully"))
     }
 

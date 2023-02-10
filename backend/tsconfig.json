@@ -15,7 +15,10 @@
       "downlevelIteration": true,
       "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "alwaysStrict": true
+      "alwaysStrict": true,
+      "typeRoots": [
+        "./src/@types"
+      ]
     },
     "include": [
       "src/**/*.ts"

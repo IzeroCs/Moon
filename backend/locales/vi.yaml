@@ -1,0 +1,10 @@
+---
+token_invalid: "Token không hợp lệ"
+token_forbidden: "Truy cập bị cấm"
+token_required: "Cần có mã token để xác thực"
+
+login_username_or_password_is_empty: "Tài khoản hoặc mật khẩu trống"
+login_username_min_length: "Tài khoản không được nhỏ hơn %s ký tự"
+login_password_min_length: "Mật khẩu không được nhỏ hơn %s ký tự"
+login_username_or_password_wrong: "Tài khoản hoặc mật khẩu không đúng"
+login_sucessfully: "Đăng nhập thành công"
