@@ -17,42 +17,83 @@ export enum Status {
     InternalServerError = 500
 }
 
+export enum ErrorType {
+    Empty = "",
+    TokenExpired = "TOKEN_EXPIRED",
+    TokenInvalid = "TOKEN_INVALID",
+    TokenRequired = "TOKEN_REQUIRED",
+    BodyValidate = "BODY_VALIDATE",
+    SystemError = "SYSTEM_ERROR",
+    RouterNotFound = "ROUTER_NOT_FOUND",
+    AuthenticateInvalid = "AUTHENTICATE_INVALID"
+}
+
+type ResultOptions = {
+    status: Status,
+    message?: string
+    data?: any,
+    errorType?: ErrorType
+}
+
+type ResultMessageDataOptions = {
+    message: string,
+    data?: any
+}
+
+type ResultStatusErrorTypeOptions = {
+    status: Status,
+    errorType?: ErrorType
+}
+
+type ResultMessageErrorTypeOptions = {
+    message: string,
+    errorType?: ErrorType
+}
+
 export default class Result {
     private _status: Status
     private _data: any
     private _message: string
+    private _errorType: ErrorType
 
-    public constructor(status: Status, message: string = "", data?: any) {
-        this._status = status
-        this._data = data
-        this._message = message
+    public constructor(options: ResultOptions) {
+        this._status = options.status
+        this._data = options.data
+        this._message = options.message || ""
+        this._errorType = options.errorType || ErrorType.Empty
 
         if (typeof this._message === "undefined" || this._message.length <= 0)
             this._message = this._messageByStatus()
     }
 
-    public static create(status: Status, message: string = "", data?: any): Result {
-        return new Result(status, message, data)
+    public static create(options: ResultOptions): Result {
+        return new Result(options)
     }
 
-    public static createString(status: Status, message: string = "", data?: any): string {
-        return new Result(status, message, data).toString()
+    public static createString(options: ResultOptions): string {
+        return new Result(options).toString()
     }
 
     public static sendValidate(res: Response,
         ...validates: Array<string | boolean>
     ): Promise<boolean> {
-        return this.sendValidateStatus(res, Status.UnprocessableEntity, ...validates)
+        return this.sendValidateStatus(res, {
+            status: Status.UnprocessableEntity,
+            errorType: ErrorType.BodyValidate
+        }, ...validates)
     }
 
-    public static async sendValidateStatus(res: Response, status: Status,
+    public static async sendValidateStatus(res: Response, options: ResultStatusErrorTypeOptions,
         ...validates: Array<string | boolean>
     ): Promise<boolean> {
-        for (let i = 0; i < validates.length; ++i) {
-            const entry = validates[i]
+        const status = options.status
+        const errorType = options.errorType
 
-            if (entry !== true) {
-                const result = this.createString(status, String(entry))
+        for (let i = 0; i < validates.length; ++i) {
+            const message = validates[i]
+
+            if (message !== true && typeof message === "string") {
+                const result = this.createString({ status, message, errorType })
                 res.status(status).send(result)
                 return Promise.reject(result)
             }
@@ -61,11 +102,25 @@ export default class Result {
         return Promise.resolve(true)
     }
 
-    public static async sendUnauthorized<T>(res: Response, msg: string,
-        condition: any | null | T
+    public static sendUnauthorized(res: Response, options: ResultMessageErrorTypeOptions) {
+        res.status(Status.Unauthorized).send(this
+            .createString({
+                status: Status.Unauthorized,
+                message: options.message,
+                errorType: options.errorType
+            }))
+    }
+
+    public static async sendUnauthorizedCondition<T>(res: Response,
+        options: ResultMessageErrorTypeOptions, condition: any | null | T
     ): Promise<T> {
         if (typeof condition === "undefined" || condition === null) {
-            const result = this.createString(Status.Unauthorized, msg)
+            const result = this.createString({
+                status: Status.Unauthorized,
+                message: options.message,
+                errorType: options.errorType
+            })
+
             res.status(Status.Unauthorized).send(result)
             return Promise.reject(result)
         }
@@ -73,20 +128,39 @@ export default class Result {
         return Promise.resolve(condition)
     }
 
-    public static sendForbidden(res: Response, msg: string = "") {
+    public static sendForbidden(res: Response, options: ResultMessageErrorTypeOptions) {
         res.status(Status.Forbidden).send(this
-            .createString(Status.Forbidden, msg))
+            .createString({
+                status: Status.Forbidden,
+                message: options.message,
+                errorType: options.errorType
+            }))
     }
 
-    public static async sendOK(res: Response, msg: string, data?: any) {
-        const result = this.createString(Status.Ok, msg, data)
+    public static sendInternalServerError(res: Response, options: ResultMessageErrorTypeOptions) {
+        res.status(Status.InternalServerError).send(this
+            .createString({
+                status: Status.InternalServerError,
+                message: options.message,
+                errorType: options.errorType || ErrorType.SystemError
+            }))
+    }
+
+    public static async sendOK(res: Response, options: ResultMessageDataOptions) {
+        const result = this.createString({
+            status: Status.Ok,
+            message: options.message,
+            data: options.data
+        })
+
         res.status(Status.Ok).send(result)
-        return Promise.resolve(data)
+        return Promise.resolve(options.data)
     }
 
     public get status(): Status { return this._status }
     public get data(): any { return this._data }
     public get message(): string { return this._message }
+    public get errorType(): ErrorType { return this.errorType }
 
     public isOK(): boolean {
         return this._status == Status.Ok || this._status == Status.Created
@@ -96,7 +170,8 @@ export default class Result {
         return JSON.stringify({
             status: this._status,
             data: this._data,
-            message: this._message
+            message: this._message,
+            errorType: this._errorType
         })
     }
 

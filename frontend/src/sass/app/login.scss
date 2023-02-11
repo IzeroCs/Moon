@@ -26,6 +26,8 @@
     margin-bottom: 10px;
     position: relative;
     text-align: center;
+
+    @include user-select(none);
 }
 
 .login-error:not(:empty) {

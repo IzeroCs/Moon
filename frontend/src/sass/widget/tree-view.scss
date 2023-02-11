@@ -28,6 +28,10 @@ li.tree-node {
     white-space: nowrap;
     height: $tree-view-item-height;
 
+    &:hover {
+        cursor: pointer;
+    }
+
     &:hover::before {
         content: "";
         background-color: $tree-view-item-hover-background-color;
@@ -47,6 +51,7 @@ li.tree-node {
     font-size: 1.1rem;
     align-self: center;
     margin-bottom: 1px;
+    cursor: pointer;
 }
 
 .tree-node-label {

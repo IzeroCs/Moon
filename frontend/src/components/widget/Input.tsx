@@ -3,12 +3,11 @@ import classNames from "classnames"
 import { isIconPath } from "../../utils/File"
 
 interface InputProps extends React.HTMLAttributes<HTMLDivElement>,
-  React.RefAttributes<HTMLDivElement> {
+  React.RefAttributes<HTMLInputElement> {
   name?: string
   icon?: string
   value?: string
-  placeholder?: string
-  inputRef?: React.RefAttributes<HTMLInputElement>
+  placeholder?: string | any
 }
 
 interface InputFieldProps {
@@ -24,18 +23,23 @@ const InputField: React.FC<InputProps & InputFieldProps> =
   forwardRef((props, ref) => {
     return <div
       className={classNames("input-field",
-        props.className)}
-      ref={ref}>
+        props.className)}>
       {props.icon && isIconPath(props.icon) ?
-        <img src={props.icon} alt={props.placeholder} className="input-field-icon path" /> : props.icon &&
-        <span className={classNames("icomoon", "input-field-icon", props.icon)}></span>}
+        <img
+          src={props.icon}
+          alt={props.placeholder}
+          className="input-field-icon path" /> : props.icon &&
+        <span
+          className={classNames("icomoon", "input-field-icon",
+            props.icon)}></span>}
 
       <input
         type={props.type}
         name={props.name}
         defaultValue={props.value}
         className={classNames("input", "input-field-" + props.type)}
-        placeholder={props.placeholder} />
+        placeholder={props.placeholder}
+        ref={ref} />
     </div>
   })
 

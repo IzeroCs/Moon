@@ -14,11 +14,13 @@ $window-titlebars-height: 40px;
 $window-titlebars-border-width: 1px;
 $window-box-shadow-offset: 3px;
 $window-box-shadow-blur: 10px;
+$window-transition: $transition-default;
 
 $navigation-height: 40px;
 $navigation-box-shadow-offset: 2px;
 $navigation-box-shadow-blur: 6px;
 $navigation-border-radius: $border-radius-default;
+$navgation-transition: $transition-default;
 
 $breadcrumb-border-radius: $border-radius-default;
 $breadcrumb-spacing: 10px;

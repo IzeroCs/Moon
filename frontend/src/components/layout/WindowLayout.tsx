@@ -1,5 +1,6 @@
 import React from "react"
 import classNames from "classnames"
+import { useTranslation } from "react-i18next"
 
 type WindowLayoutProps = {
   icon?: string
@@ -13,6 +14,8 @@ type WindowLayoutProps = {
 const WindowLayout: React.FC<WindowLayoutProps &
   React.HTMLAttributes<HTMLDivElement>> =
   (props) => {
+    const [t] = useTranslation()
+
     return <div className={classNames("window", props.className)}>
       <div className="window-titlebars">
         <div className="window-titlebars-title">
@@ -23,20 +26,32 @@ const WindowLayout: React.FC<WindowLayoutProps &
         </div>
         <div className="window-titlebars-button">
           {props.isButtonHelp && <button
-            className="window-titlebars-button-item icomoon ic-about"
-            data-action="help"></button>}
+            type="button"
+            className="window-titlebars-button-item
+              icomoon ic-about"
+            data-action="help"
+            aria-label={t("window_button_help")!!}></button>}
 
           {(props.isButtonMinimize || true) && <button
-            className="window-titlebars-button-item icomoon ic-window-minimize"
-            data-action="minimize"></button>}
+            type="button"
+            className="window-titlebars-button-item
+              icomoon ic-window-minimize"
+            data-action="minimize"
+            aria-label={t("window_button_minimize")!!}></button>}
 
           {(props.isButtonRestore || true) && <button
-            className="window-titlebars-button-item icomoon ic-window-restore"
-            data-action="restore"></button>}
+            type="button"
+            className="window-titlebars-button-item
+              icomoon ic-window-restore"
+            data-action="restore"
+            aria-label={t("window_button_restore")!!}></button>}
 
           {(props.isButtonClose || true) && <button
-            className="window-titlebars-button-item icomoon ic-window-close"
-            data-action="close"></button>}
+            type="button"
+            className="window-titlebars-button-item
+              icomoon ic-window-close"
+            data-action="close"
+            aria-label={t("window_button_close")!!}></button>}
         </div>
       </div>
       <div className="window-container window-sidebar-container">

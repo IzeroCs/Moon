@@ -70,9 +70,12 @@
     height: $window-titlebars-height * 0.65;
     cursor: pointer;
 
+    @include border-radius(50% 50%);
+    @include transition($window-transition color,
+        $window-transition background-color);
+
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
-        @include border-radius(50% 50%);
     }
 
     &[data-action=help]:hover {

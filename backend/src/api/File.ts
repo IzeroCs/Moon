@@ -6,7 +6,7 @@ import { middlewareChecker } from "../utils/Tokens"
 export default class File {
     @Get("/list")
     public list(@Res() res: Response, @Req() req: Request) {
-        console.log(req.decoded)
+        console.log(req.decoded, req.headers["user-agent"])
         res.send("OK")
     }
 }

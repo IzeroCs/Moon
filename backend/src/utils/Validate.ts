@@ -9,11 +9,13 @@ export default class Validate {
     }
 
     public static isLength(msg: string, val: any, length: { min?: number, max?: number }) {
-        if (typeof length.min !== "undefined" && val.length < length.min)
-            return msg
+        if (typeof length.min !== "undefined" && typeof val !== "undefined" &&
+            val.length < length.min)
+                return msg
 
-        if (typeof length.max !== "undefined" && val.length > length.max)
-            return msg
+        if (typeof length.max !== "undefined" && typeof val !== "undefined" &&
+            val.length > length.max)
+                return msg
 
         return true
     }

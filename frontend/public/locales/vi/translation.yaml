@@ -1,2 +1,17 @@
 axios_err_network: "Không thể kết nối máy chủ."
 axios_err_unknow: "Lỗi không xác định, thử lại."
+
+axios_err_data: "Lỗi dữ liệu trả về"
+
+navigation_notification: "Thông báo"
+navigation_personal: "Cá nhân"
+navigation_search: "Tìm kiếm"
+
+window_button_help: "Hỗ trợ"
+window_button_minimize: "Thu nhỏ"
+window_button_restore: "Khôi phục"
+window_button_close: "Đóng"
+
+login_input_username: "Tên đăng nhập hoặc email"
+login_input_password: "Mật khẩu"
+login_button: "Đăng nhập"

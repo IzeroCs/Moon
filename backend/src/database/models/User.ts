@@ -2,6 +2,7 @@ import { Schema, Document, model } from "mongoose"
 import Result, { Status } from "../../utils/Result"
 import Security from "../../utils/Security"
 import Logger from "../../utils/Logger"
+import i18n from "../../Locale"
 
 export interface IUser extends Document {
     username: string
@@ -41,14 +42,18 @@ export default class User {
         ] })
 
         if (user) {
-            return Promise.reject(Result.create(Status
-                .BadRequest, "Username or email give already exist"))
+            return Promise.reject(Result.create({
+                status: Status.BadRequest,
+                message: i18n.__("user_create_already_exists")
+            }))
         }
 
         const hashPassword = await Security.encryptPassword(password)
         await new User.model({ username, password: hashPassword, email }).save()
-        return Promise.resolve(Result.create(Status
-            .Created, "Account created sucessfully"))
+        return Promise.resolve(Result.create({
+            status: Status.Created,
+            message: i18n.__("user_create_sucessfully")
+        }))
     }
 
     public static async findUsernameOrEmail(mix: string) {

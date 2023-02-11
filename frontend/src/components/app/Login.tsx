@@ -6,42 +6,48 @@ import {
   InputText
 } from "../widget/Input"
 import { ButtonIcon } from "../widget/Button"
-import Person from "../api/Person"
+import Person from "../../api/Person"
 import { useTranslation } from "react-i18next"
+import { AxiosHandler } from "../../api/Handler"
+import { PersonAction } from "../../store/reducers/Person"
+import { useSessionAccessToken, useSessionRefreshToken } from "../../api/Hooks"
+import { useAppDispatch } from "../../store/Hooks"
 
 const Login: React.FC<React.HTMLAttributes<HTMLDivElement>> =
   (props) => {
     const [error, setError] = useState("")
+    const [inputDisable, setInputDisable] = useState(false)
+    const [, setAccessToken] = useSessionAccessToken()
+    const [, setRefreshToken] = useSessionRefreshToken()
     const { t } = useTranslation()
+    const dispatch = useAppDispatch()
 
-    const usernameRef = useRef<HTMLDivElement>(null)
-    const passwordRef = useRef<HTMLDivElement>(null)
+    const usernameRef = useRef<HTMLInputElement>(null)
+    const passwordRef = useRef<HTMLInputElement>(null)
 
-    function onButtonClick(event: any) {
-      if (usernameRef.current !== null &&
-        passwordRef.current != null &&
-        event.target != null) {
-        const usernameElement = usernameRef.current
-        const passwordElement = passwordRef.current
-        const buttonElement: HTMLButtonElement = event.target
+    function onButtonClick() {
+      const username = usernameRef.current
+      const password = passwordRef.current
 
-        usernameElement.classList.add("disabled")
-        passwordElement.classList.add("disabled")
-        buttonElement.classList.add("logging")
+      if (username === null || password === null)
+        return
 
-        setTimeout(() => {
-          Person.login("admin", "admin")
-            .then(res => { console.log(res) })
-            .catch(err => {
-              if (err.code && err.code === "ERR_NETWORK")
-                setError(t("axios_err_network")!!)
-
-              usernameElement.classList.remove("disabled")
-              passwordElement.classList.remove("disabled")
-              buttonElement.classList.remove("logging")
-            })
-        }, 500)
-      }
+      setInputDisable(true)
+      setTimeout(() => {
+        Person.login(username.value, password.value)
+          .then(AxiosHandler.response((res) => {
+            setAccessToken(res.data.accessToken)
+            setRefreshToken(res.data.refreshToken)
+            dispatch(PersonAction.setToken({
+              access: res.data.accessToken,
+              refresh: res.data.refreshToken
+            }))
+          })).catch(AxiosHandler.error((res) => {
+            setError(res.message)
+          })).finally(() => {
+            setInputDisable(false)
+          })
+      }, 500)
     }
 
     return <div className={classNames("login-wrapper",
@@ -53,24 +59,33 @@ const Login: React.FC<React.HTMLAttributes<HTMLDivElement>> =
           <span className="login-error">{error}</span>
           <InputGroup className="login-input-group">
             <InputText
-              className="login-input-field"
+              className={classNames({
+                "login-input-field": true,
+                "disabled": inputDisable
+              })}
               icon="ic-user-outline"
               name="username"
               value="admin"
-              placeholder="Username"
+              placeholder={t("login_input_username")}
               ref={usernameRef} />
             <InputPassword
-              className="login-input-filed"
+              className={classNames({
+                "login-input-field": true,
+                "disabled": inputDisable
+              })}
               icon="ic-security-outline"
               name="password"
               value="admin"
-              placeholder="Password"
+              placeholder={t("login_input_password")}
               ref={passwordRef} />
           </InputGroup>
           <ButtonIcon
-            className="login-button"
+            className={classNames({
+              "login-button": true,
+              "logging": inputDisable
+            })}
             icon="ic-arrow-next"
-            aria-label="Login button"
+            ariaLabel={t("login_button")}
             onClick={onButtonClick} />
         </form>
       </div>
