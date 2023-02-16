@@ -1,10 +1,10 @@
 declare global {
-    namespace Express {
-        interface Request {
-            decoded: any
-            userAgent: string
-        }
+  namespace Express {
+    interface Request {
+      decoded: any
+      userAgent: string
     }
+  }
 }
 
-export {}
+export { }

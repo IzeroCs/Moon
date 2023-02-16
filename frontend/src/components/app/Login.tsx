@@ -8,17 +8,15 @@ import {
 import { ButtonIcon } from "../widget/Button"
 import Person from "../../api/Person"
 import { useTranslation } from "react-i18next"
-import { AxiosHandler } from "../../api/Handler"
+import { AxiosHandler } from "../../api/Axios"
 import { PersonAction } from "../../store/reducers/Person"
-import { useSessionAccessToken, useSessionRefreshToken } from "../../api/Hooks"
 import { useAppDispatch } from "../../store/Hooks"
+import { Tokens } from "../../api/Hooks"
 
 const Login: React.FC<React.HTMLAttributes<HTMLDivElement>> =
   (props) => {
     const [error, setError] = useState("")
     const [inputDisable, setInputDisable] = useState(false)
-    const [, setAccessToken] = useSessionAccessToken()
-    const [, setRefreshToken] = useSessionRefreshToken()
     const { t } = useTranslation()
     const dispatch = useAppDispatch()
 
@@ -36,8 +34,8 @@ const Login: React.FC<React.HTMLAttributes<HTMLDivElement>> =
       setTimeout(() => {
         Person.login(username.value, password.value)
           .then(AxiosHandler.response((res) => {
-            setAccessToken(res.data.accessToken)
-            setRefreshToken(res.data.refreshToken)
+            Tokens.setAccess(res.data.accessToken)
+            Tokens.setRefresh(res.data.refreshToken)
             dispatch(PersonAction.setToken({
               access: res.data.accessToken,
               refresh: res.data.refreshToken

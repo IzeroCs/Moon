@@ -17,7 +17,7 @@ export const Person = createSlice({
   name: "Authenticate",
   initialState,
   reducers: {
-    setToken: (state, action: PayloadAction<{ access: string, refresh: string}>) => {
+    setToken: (state, action: PayloadAction<{ access: string, refresh: string }>) => {
       const accessToken = action.payload.access
       const refreshToken = action.payload.refresh
 
@@ -25,6 +25,12 @@ export const Person = createSlice({
       state.refreshToken = refreshToken
       state.isAuthentic = accessToken.length > 0 &&
         refreshToken.length > 0
+    },
+
+    cleanToken: (state) => {
+      state.accessToken = ""
+      state.refreshToken = ""
+      state.isAuthentic = false
     }
   }
 })
@@ -36,7 +42,8 @@ export const PersonSelector = {
 }
 
 export const PersonAction = {
-  setToken: Person.actions.setToken
+  setToken: Person.actions.setToken,
+  cleanToken: Person.actions.cleanToken
 }
 
 export default Person.reducer

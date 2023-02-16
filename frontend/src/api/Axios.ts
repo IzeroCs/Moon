@@ -1,5 +1,13 @@
 import axios, { AxiosError, AxiosResponse } from "axios"
+import { Store } from "../store/Store"
 import i18next from "../i18next"
+import Person from "./Person"
+import { Tokens } from "./Hooks"
+import { PersonAction } from "../store/reducers/Person"
+
+export const AxiosInstance = axios.create({
+  baseURL: "http://127.0.0.1:3030/api"
+})
 
 export enum Status {
   Ok = 200,
@@ -36,6 +44,33 @@ export abstract class Result {
   errorType: ErrorType = ErrorType.Empty
 }
 
+export function setupAxios() {
+  AxiosInstance.interceptors.request.use(async (config) => {
+    const accessToken = Store.getState().Person.accessToken
+    if (accessToken.length > 0)
+      config.headers["Authorization"] = "Bearer " + accessToken
+    return config
+  }, (err) => Promise.reject(err))
+
+  AxiosInstance.interceptors.response.use((res) => {
+    return res
+  }, async (err) => {
+    if (axios.isAxiosError(err) && err.response?.data) {
+      const result: Result = err.response?.data
+
+      if (result.status === Status.Unauthorized) {
+        const accessToken = Store.getState().Person.accessToken
+        const refreshToken = Store.getState().Person.refreshToken
+        const newAccessToken = await Person.refresh(accessToken, refreshToken)
+
+        console.log(newAccessToken.data.data.accessToken)
+      }
+    }
+
+    // return Promise.reject(err)
+  })
+}
+
 export namespace AxiosHandler {
   export function response<T = Result>(callback:
     (res: T, axios: AxiosResponse<T>) => void
@@ -47,7 +82,7 @@ export namespace AxiosHandler {
     }
   }
 
-  export function error<T= Result>(callback:
+  export function error<T = Result>(callback:
     (res: Result, err: Error | AxiosError<T>) => void
   ) {
     return (err: Error | AxiosError<T>) => {
@@ -55,9 +90,13 @@ export namespace AxiosHandler {
         callback(err.response?.data, err)
       } else {
         const message = err.message || String(err)
-        callback({ status: Status.InternalServerError,
-          message, data: {}, errorType: ErrorType.Empty }, err)
+        callback({
+          status: Status.InternalServerError,
+          message, data: {}, errorType: ErrorType.Empty
+        }, err)
       }
     }
   }
 }
+
+export default AxiosInstance

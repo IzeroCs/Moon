@@ -5,7 +5,7 @@ import FileStation from "./app/FileStation"
 import Login from "./app/Login"
 import { useAppDispatch, useAppSelector } from "../store/Hooks"
 import { PersonSelector, PersonAction } from "../store/reducers/Person"
-import { useSessionAccessToken, useSessionRefreshToken } from "../api/Hooks"
+import { Tokens } from "../api/Hooks"
 import "../sass/app.scss"
 
 const App: React.FC = () => {
@@ -15,23 +15,20 @@ const App: React.FC = () => {
   const [windowHeight, setWindowHeight] = useState(document
     .documentElement.clientHeight)
 
-  const [accessToken] = useSessionAccessToken()
-  const [refreshToken] = useSessionRefreshToken()
-
   useEffect(() => {
     function dispatchResize() {
       setWindowHeight(document.documentElement.clientHeight)
     }
 
     dispatch(PersonAction.setToken({
-      access: accessToken || "",
-      refresh: refreshToken || ""
+      access: Tokens.getAccess(),
+      refresh: Tokens.getRefresh()
     }))
 
     setShow(true)
     window.addEventListener("resize", dispatchResize)
     return () => window.removeEventListener("resize", dispatchResize)
-  }, [dispatch, accessToken, refreshToken])
+  }, [dispatch])
 
   return <div
     className="bg-cover"

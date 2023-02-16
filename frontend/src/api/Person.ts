@@ -1,5 +1,4 @@
-import axios from "axios"
-import { Result } from "./Handler"
+import { Result, AxiosInstance } from "./Axios"
 
 export interface LoginResult extends Result {
   data: {
@@ -8,10 +7,23 @@ export interface LoginResult extends Result {
   }
 }
 
+export interface RefreshResult extends Result {
+  data: {
+    accessToken: string
+  }
+}
+
 export default class Person {
   static login(username: string, password: string) {
-    return axios.post<LoginResult>("/api/person/login", {
+    return AxiosInstance.post<LoginResult>("/person/login", {
       username, password
+    })
+  }
+
+  static refresh(accessToken: string, refreshToken: string) {
+    return AxiosInstance.post<RefreshResult>("/person/refresh", {
+      access_token: accessToken,
+      refresh_token: refreshToken
     })
   }
 }

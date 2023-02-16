@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import WindowLayout from "../layout/WindowLayout"
 import WindowContent from "../layout/WindowContent"
 import SidebarLayout from "../layout/SidebarLayout"
@@ -14,6 +14,7 @@ import TreeViewData from "../../tree-view.json"
 import BreadcrumbData from "../../breadcrumb.json"
 import DropdownData from "../../dropdown.json"
 import { ListViewColumnSize } from "../widget/list-view/ListViewAdapter"
+import AxiosInstance, { AxiosHandler } from "../../api/Axios"
 
 const listColumnsData = [
   { label: "Name" },
@@ -24,6 +25,15 @@ const listColumnsData = [
 
 const FileStation: React.FC =
   () => {
+    useEffect(() => {
+      AxiosInstance.get("/file/list")
+        .then(AxiosHandler.response((res) => {
+          console.log("Get list response")
+        })).catch(AxiosHandler.error((res) => {
+          console.log("Get list catch error")
+        }))
+    })
+
     return <WindowLayout
       icon={IconFolder}
       title="File Staion"
