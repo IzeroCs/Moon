@@ -1,0 +1,52 @@
+ul.breadcrumb {
+    border: 1px solid $breadcrumb-border-color;
+    display: inline-block;
+    list-style: none;
+    white-space: nowrap;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: inherit;
+
+    @include border-radius($breadcrumb-border-radius);
+}
+
+li.breadcrumb-item {
+    display: inline-block;
+    padding: 0;
+    height: inherit;
+    vertical-align: middle;
+
+    &:first-child {
+        margin-left: $breadcrumb-spacing;
+    }
+
+    &:last-child {
+        margin-right: $breadcrumb-spacing;
+    }
+
+    & + li::before {
+        content: $ic-arrow-outline-right;
+        color: $breadcrumb-arrow-color;
+        margin: 0 $breadcrumb-spacing / 2;
+        vertical-align: text-bottom;
+
+        @include icomoon;
+    }
+}
+
+.breadcrumb-label {
+    color: $breadcrumb-color;
+    display: inline-block;
+    font-size: 0.85rem;
+    cursor: pointer;
+    height: inherit;
+    vertical-align: sub;
+
+    @include user-select(none);
+
+    &:hover {
+        color: $breadcrumb-hover-color;
+        @include tap-highlight-color();
+    }
+}

@@ -1,0 +1,43 @@
+$icomoon-font-path: "/public/fonts/icomoon" !default;
+
+$border-radius-default: 4px;
+$transition-default: 0.3s;
+$scrollbar-size-default: 6px;
+
+$button-border-radius: $border-radius-default;
+
+$input-padding: 10px;
+$input-border-radius: $border-radius-default;
+
+$window-titlebars-height: 40px;
+$window-titlebars-border-width: 1px;
+$window-box-shadow-offset: 3px;
+$window-box-shadow-blur: 10px;
+$window-sidebar-layout-scrollbar-size: $scrollbar-size-default;
+$window-content-scrollbar-size: $scrollbar-size-default;
+
+$navigation-height: 40px;
+$navigation-box-shadow-offset: 2px;
+$navigation-box-shadow-blur: 6px;
+$navigation-border-radius: $border-radius-default;
+
+$breadcrumb-border-radius: $border-radius-default;
+$breadcrumb-spacing: 10px;
+
+$tree-view-item-height: 33px;
+$tree-view-spacing-node: 8px;
+$tree-view-item-border-radius: $border-radius-default;
+
+$toolbar-height: 33px;
+$toolbar-spacing: 5px;
+
+$dropdown-item-height: 34px;
+$dropdown-border-radius: $border-radius-default;
+$dropdown-box-shadow-offset: 1px;
+$dropdown-box-shadow-blur: 5px;
+$dropdown-transition: $transition-default;
+$dropdown-item-spacing: 10px;
+$dropdown-parent-sub-spacing: 15px;
+
+$desktop-grid-icon-size: 56px;
+$desktop-grid-spacing: 10px;

@@ -1,0 +1,14 @@
+input {
+    font-size: 0.9rem;
+    outline: none;
+    border: 1px solid $input-border-color;
+    margin: 0;
+    padding: $input-padding;
+    height: inherit;
+
+    @include border-radius($input-border-radius);
+
+    &:hover, &:focus {
+        border: 1px solid $input-border-hover-color;
+    }
+}

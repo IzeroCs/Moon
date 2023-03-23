@@ -1,0 +1,32 @@
+.desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    list-style: none;
+    gap: 20px;
+    padding-top: 2rem;
+    padding-left: 2rem;
+}
+
+.desktop-grid-item {
+    list-style: none;
+    text-align: center;
+
+    &:hover {
+        cursor: pointer;
+
+        .desktop-grid-icon,
+        & > .desktop-grid-label {
+            filter: brightness(0.66);
+        }
+    }
+}
+
+.desktop-grid-icon {
+    width: $desktop-grid-icon-size;
+    height: $desktop-grid-icon-size;
+    margin-bottom: $desktop-grid-spacing;
+}
+
+.desktop-grid-label {
+    color: #ffffff;
+}

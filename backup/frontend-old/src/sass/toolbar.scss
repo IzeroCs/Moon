@@ -1,0 +1,51 @@
+.toolbar {
+    border-spacing: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
+
+    & ~ .toolbar {
+        margin-top: $toolbar-spacing;
+    }
+}
+
+.toolbar-row {
+    height: $toolbar-height;
+    margin: 0;
+    padding: 0;
+
+    & ~ .toolbar-row {
+        margin-top: $toolbar-spacing;
+    }
+}
+
+.toolbar-cell {
+    height: inherit;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+    padding-right: $toolbar-spacing;
+
+    &:last-child {
+        padding-right: 0;
+    }
+
+    &.stretch {
+        width: 100%;
+    }
+
+    & > .btn-icon:first-child:nth-last-child(2) {
+        margin-right: 0;
+        border-right: 1px solid transparent;
+        @include border-radius($button-border-radius 0 0 $button-border-radius);
+    }
+
+    & > .btn-icon:first-child:nth-last-child(2) ~ .btn-icon {
+        margin-left: 0;
+        @include border-radius(0 $button-border-radius $button-border-radius 0);
+    }
+
+    & > .btn-icon:first-child:nth-last-child(2):hover ~ .btn-icon {
+        border-left: 1px solid $button-border-hover-color;
+    }
+}
